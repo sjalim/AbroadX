@@ -1,0 +1,42 @@
+.card-head{
+
+  font-size: 7vw;
+  text-align: center;
+}
+
+body{
+  background-color: #ff7d7a;
+
+}
+.form{
+  /* width: 50.5rem; */
+      font-family: 'Merriweather', serif;
+
+      margin-bottom: 200px;
+     
+}
+label{
+     font-family: 'Montserrat', sans-serif;
+}
+.custom-select{
+   font-family: 'Montserrat', sans-serif;
+  background: transparent;
+    margin-top: 7px;
+    margin-right: 10px;
+    padding-top: 5px;
+    padding: 5px;
+}
+
+ input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color:#24262b;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
