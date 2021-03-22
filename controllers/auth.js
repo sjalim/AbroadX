@@ -25,7 +25,7 @@ exports.login = async (req,res) =>{
 
         if(!email || !password)
         {
-            return res.status(400).render('login',{
+            return res.status(400).render('login.hbs',{
                 message : 'Please provide an email and password'
             })
         }
@@ -33,9 +33,9 @@ exports.login = async (req,res) =>{
         db.query('select * from users where email = ?',[email], async(error,results) => {
 
             console.log(results);
-             if(!results || !(bcrypt.compare(password,results[0].password)))
+             if(!results || !(await bcrypt.compare(password,results[0].password)))
              {
-                 res.status(401).render('login',{
+                 res.status(401).render('login.hbs',{
                      message : 'Email or Password is incorrect'
 
                  })
@@ -98,7 +98,7 @@ exports.register = (req,res) => {
             let hashPassword = await bcrypt.hash(password,8);
             console.log(hashPassword);
 
-            db.query('insert into users set ?',{name:name, email:email,password:password,phone:country_code+phone,status:0,create_date:currentDate.getDate(),
+            db.query('insert into users set ?',{name:name, email:email,password:hashPassword,phone:country_code+phone,status:0,create_date:currentDate.getDate(),
                 gender: gender
 
             }, (error,results) =>{
@@ -110,7 +110,7 @@ exports.register = (req,res) => {
                 else
                 {
                     console.log(results);
-                    return res.render('register',{
+                    return res.render('register.hbs',{
 
                         message :'user registered'
                     });

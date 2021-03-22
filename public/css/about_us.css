@@ -1,0 +1,27 @@
+#about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background: -webkit-linear-gradient(left, #0d2d3e, rgb(29, 110, 133));
+    padding: 10% 7%;
+}
+
+#about-us h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+#about-us p {
+    font-weight: 500;
+}
+.img-wrap {
+    width: 100%;
+}
+
+.img-wrap img{
+    width: 100%;
+    padding: 5px;
+    border-radius: 100%;
+    box-shadow: 0 0 10px #999999;
+}
