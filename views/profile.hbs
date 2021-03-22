@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AbroadX</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Sacramento&display=swap"
+            rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="/img/logo/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link nav_bar_features" href="/">Home</a>
+                <a class="nav-link nav_bar_features" href="/uniAdmission">University Admission</a>
+                <a class="nav-link nav_bar_features" href="#">Scholarship</a>
+                <a class="nav-link nav_bar_features" href="#">FAQ</a>
+                <a class="nav-link nav_bar_features" href="#">Blog</a>
+                <a class="nav-link nav_bar_features" href="#">Community</a>
+                <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
+                <a class="nav-link nav_bar_features btn btn-sm" href="/auth/logout">Logout</a>
+
+
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container profile-body">
+    <div class="row">
+        <div class="col-12 col-sm-4">
+            <div class="card">
+                <div class="avatar-ctn">
+                    <img src="/img/profile.png" class="profile-pic" alt="profile-img">
+                </div>
+                <button type="button" class="btn btn-outline-secondary">Change Profile Picture</button>
+                <button class="btn" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="fa fa-edit"></i>Edit</button>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-8">
+            <div class="card">
+                <div class="show">
+                    <label class="d-inline">Name:</label>
+                    <h4 id="name-show" class="d-inline">{{user.name}}</h4>
+                </div>
+
+                <div class="edit">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="name" value={{user.name}}>
+                    </div>
+
+                </div>
+
+                <div class="show">
+                    <label class="d-inline">Email:</label>
+                    <h4 id="email-show" class="d-inline">{{user.email}}</h4>
+                </div>
+
+                <div class="edit">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="email"  value={{user.email}}>
+                    </div>
+
+                </div><div class="show">
+
+                <label class="d-inline">Phone:</label>
+                <h4 id="name-show" class="d-inline">{{user.phone}}</h4>
+            </div>
+
+                <div class="edit">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+
+                            </div>
+                        </div>
+                        <input type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="phone" value={{user.phone}}>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Footer section -->
+<footer id="footer">
+    <div class="container footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organization</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#">University Admission</a></li>
+                    <li><a href="#">Scholarship</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>© AboardX 2021. All Rights Reserved</p>
+</footer>
+
+
+<!-- jQuery Here -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- jQuery counterup, waypoint -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/assets/js/jquery.waypoints.min.js"></script>
+<script src="/assets/js/jquery.counterup.min.js"></script>
+
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+
+
+</body>
+</html>
