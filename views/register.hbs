@@ -5,170 +5,172 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-            <link
-                href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Sacramento&display=swap"
-                rel="stylesheet">
-                <link rel="preconnect" href="https://fonts.gstatic.com">
-                <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+          rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Sacramento&display=swap"
+            rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
 
-    {{!-- nav bar --}}
+{{!-- nav bar --}}
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/logo/logo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="/img/logo/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link nav_bar_features" href="/">Home</a>
-                    <a class="nav-link nav_bar_features" href="/uniAdmission">University Admission</a>
-                    <a class="nav-link nav_bar_features" href="#">Scholarship</a>
-                    <a class="nav-link nav_bar_features" href="#">FAQ</a>
-                    <a class="nav-link nav_bar_features" href="#">Blog</a>
-                    <a class="nav-link nav_bar_features" href="#">Community</a>
-                    <a class="nav-link nav_bar_features" href="#">Your Profile</a>
-                    <a class="nav-link nav_bar_features btn btn-sm" href="#">Sign In</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    {{!-- register form --}}
-
-
-    <div class="container-fluid mt-4 form">
-
-        <div class="card-head">
-            Register
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-
-                <form action="/auth/register" method="POST">
-                    <div class="form-group mt-4 mb-4">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                    </div>
-
-                    <div class="form-group mt-4 mb-4">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-
-
-                    <div class="form-group mt-4 mb-4">
-                        <label for="phone">Phone</label>
-
-                        <div class="input-group">
-                            <div class="input-group-prepend pb-2">
-                                <select class="custom-select mr-sm-2" id="country-code-phone" name="country_code">
-                                    <option selected>Country Code</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <input type="text" class="form-control" id="phone" name="phone">
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group mt-4 mb-4">
-                        <input type="radio" id="male" name="gender" value="male">
-                        <label for="male">Male</label>
-                        <input type="radio" id="female" name="gender" value="female">
-                        <label for="female">Female</label>
-                    </div>
-
-
-                    <div class="form-group mt-4 mb-4">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="form-group mt-4 mb-4">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link nav_bar_features" href="/">Home</a>
+                <a class="nav-link nav_bar_features" href="/uniAdmission">University Admission</a>
+                <a class="nav-link nav_bar_features" href="#">Scholarship</a>
+                <a class="nav-link nav_bar_features" href="#">FAQ</a>
+                <a class="nav-link nav_bar_features" href="#">Blog</a>
+                <a class="nav-link nav_bar_features" href="#">Community</a>
+                <a class="nav-link nav_bar_features" href="#">Your Profile</a>
+                <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>
+                <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
             </div>
         </div>
     </div>
+</nav>
+
+{{!-- register form --}}
 
 
-    <!-- Footer section -->
-    <footer id="footer">
-        <div class="container footer-container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Organization</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Team</a></li>
-                    </ul>
+<div class="container-fluid mt-4 form">
+
+    <div class="card-head">
+        Register
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            <form action="/auth/register" method="POST">
+                <div class="form-group mt-4 mb-4">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
                 </div>
-                <div class="footer-col">
-                    <h4>Programs</h4>
-                    <ul>
-                        <li><a href="#">University Addmission</a></li>
-                        <li><a href="#">Scholarship</a></li>
-                    </ul>
+
+                <div class="form-group mt-4 mb-4">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
-                <div class="footer-col">
-                    <h4>Get Help</h4>
-                    <ul>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+
+                <div class="form-group mt-4 mb-4">
+                    <label for="phone">Phone</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend pb-2">
+                            <select class="custom-select mr-sm-2" id="country-code-phone" name="country_code">
+                                <option selected>Country Code</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <input type="text" class="form-control" id="phone" name="phone">
                     </div>
+                </div>
+
+
+                <div class="form-group mt-4 mb-4">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+
+
+                <div class="form-group mt-4 mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group mt-4 mb-4">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        {{#if message}}
+            <h4 class="alert alert-danger mt-4"> {{message}}</h4>
+        {{/if}}
+    </div>
+
+</div>
+
+
+<!-- Footer section -->
+<footer id="footer">
+    <div class="container footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organization</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#">University Addmission</a></li>
+                    <li><a href="#">Scholarship</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
-        <p>© AboardX 2021. All Rights Reserved</p>
-    </footer>
+    </div>
+    <p>© AboardX 2021. All Rights Reserved</p>
+</footer>
 
 
+<!-- jQuery Here -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- jQuery counterup, waypoint -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/assets/js/jquery.waypoints.min.js"></script>
+<script src="/assets/js/jquery.counterup.min.js"></script>
 
 
-
-    <!-- jQuery Here -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- jQuery counterup, waypoint -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-
-
-    <script src="js/register.js"></script>
+<script src="/js/register.js"></script>
 
 </body>
 
