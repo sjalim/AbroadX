@@ -1,16 +1,44 @@
 const express = require('express');
 
 const router = express.Router();
+const authController = require('../controllers/auth');
 
-router.get("/", (req, res) => {
+router.get("/", authController.isLoggedIn, (req, res) => {
 
-    res.render("index.ejs");
+    res.render("index.ejs",{
+        user : req.user
+    });
+});
+
+router.get("/contact_us", authController.isLoggedIn, (req, res) => {
+
+    res.render("contact_us.ejs",{
+        user : req.user
+    });
+});
+
+router.get("/about_us", authController.isLoggedIn, (req, res) => {
+
+    res.render("about_us.ejs",{
+        user : req.user
+    });
 });
 
 
-router.get("/uniAdmission", (req, res) => {
 
-    res.render("uniAdmission.hbs");
+router.get("/", authController.isLoggedIn, (req, res) => {
+
+    res.render("index.ejs",{
+        user : req.user
+    });
+});
+
+
+router.get("/uniAdmission", authController.isLoggedIn,(req, res) => {
+
+    res.render("uniAdmission.hbs",{
+        user : req.user
+    });
 });
 
 
@@ -23,19 +51,22 @@ router.get("/login", (req, res) => {
     res.render("login.hbs");
 });
 
-router.get("/contact_us", (req, res) => {
+router.get("/profile", authController.isLoggedIn, (req, res) => {
 
-    res.render("contact_us.ejs");
+    if (req.user) {
+        res.render("profile.hbs",{
+
+            user : req.user
+
+        });
+
+    }
+    else {
+        res.redirect("/login");
+    }
+
+
 });
 
-router.get("/about_us", (req, res) => {
-
-    res.render("about_us.ejs");
-});
-
-router.get("/edit_profile", (req, res) => {
-
-    res.render("edit_profile.ejs");
-});
 
 module.exports = router;
