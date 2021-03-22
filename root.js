@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 
 dotenv.config({
         path: "./.env"
@@ -36,6 +37,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 
 db.connect( (error) => {
  if(error)
