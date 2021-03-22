@@ -8,11 +8,58 @@
     <link rel="stylesheet" href="css/uniAdmission.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-        
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
 </head>
 <body>
-  
+
+<!-- Nav Bar -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="img/logo/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link nav_bar_features" href="/">Home</a>
+                <a class="nav-link nav_bar_features" href="/uniAdmission">University Admission</a>
+                <a class="nav-link nav_bar_features" href="#">Scholarship</a>
+                <a class="nav-link nav_bar_features" href="#">FAQ</a>
+                <a class="nav-link nav_bar_features" href="#">Blog</a>
+                <a class="nav-link nav_bar_features" href="#">Community</a>
+
+                {{#if user}}
+
+                <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
+                <a class="nav-link nav_bar_features btn btn-sm" href="/">Logout</a>
+
+                {{else}}
+
+                    <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>
+                <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
+
+                {{/if}}
+
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
     
     <div class="page-title">
 
@@ -24,7 +71,56 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+
+
+
+
+
+
+<!-- Footer section -->
+<footer id="footer">
+    <div class="container footer-container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organization</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#">University Addmission</a></li>
+                    <li><a href="#">Scholarship</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>© AboardX 2021. All Rights Reserved</p>
+</footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
