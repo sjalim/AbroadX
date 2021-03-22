@@ -2,12 +2,14 @@ const express = require("express");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
 const path = require("path");
+const cookieParser = require('cookie-parser');
 
 dotenv.config({
         path: "./.env"
 });
 
 const app = express();
+
 
 
 
@@ -29,6 +31,9 @@ app.use(express.urlencoded({
 
 //font data to back
 app.use(express.json());
+
+//cookie grab
+app.use(cookieParser());
 
 app.set('view engine', 'hbs');
 
