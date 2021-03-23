@@ -1,0 +1,145 @@
+body{
+    background:#f9f9fb;    
+    }
+    .view-account{
+    background:#FFFFFF; 
+    margin-top:20px;
+    }
+    .view-account .pro-label {
+    font-size: 13px;
+    padding: 4px 5px;
+    position: relative;
+    top: -5px;
+    margin-left: 10px;
+    display: inline-block
+    }
+    
+    .view-account .content-panel {
+    padding: 30px
+    }
+    
+    .view-account .content-panel .title {
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 18px
+    }
+    
+    .view-account .content-panel .fieldset-title {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaf1;
+    margin-bottom: 30px;
+    color: #616670;
+    font-size: 16px
+    }
+    
+    .view-account .content-panel .avatar .figure img {
+    float: right;
+    width: 64px
+    }
+    
+    .view-account .content-panel .content-header-wrapper {
+    position: relative;
+    margin-bottom: 30px
+    }
+    
+    .view-account .content-panel .content-header-wrapper .actions {
+    position: absolute;
+    right: 0;
+    top: 0
+    }
+    
+    .view-account .content-panel .content-utilities {
+    position: relative;
+    margin-bottom: 30px
+    }
+    
+    .view-account .content-panel .content-utilities .btn-group {
+    margin-right: 5px;
+    margin-bottom: 15px
+    }
+    
+    .view-account .content-panel .content-utilities .fa {
+    font-size: 16px;
+    margin-right: 0
+    }
+    
+    .view-account .content-panel .content-utilities .page-nav {
+    position: absolute;
+    right: 0;
+    top: 0
+    }
+    
+    .view-account .content-panel .content-utilities .page-nav .btn-group {
+    margin-bottom: 0
+    }
+    
+    .view-account .content-panel .content-utilities .page-nav .indicator {
+    color: #a2a6af;
+    margin-right: 5px;
+    display: inline-block
+    }
+
+
+    @media (max-width:767px) {
+    .view-account .content-panel .title {
+        text-align: center
+    }
+    .view-account .content-panel .content-header-wrapper .actions {
+        position: static;
+        margin-bottom: 30px
+    }
+    .view-account .content-panel {
+        padding: 0
+    }
+    .view-account .content-panel .content-utilities .page-nav {
+        position: static;
+        margin-bottom: 15px
+    }
+    .view-account .content-panel .avatar .figure img {
+        float: none;
+        margin-bottom: 15px
+    }
+    .view-account .file-uploader {
+        margin-bottom: 15px
+    }
+    .view-account .mail-subject {
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    .view-account .content-panel .mails-wrapper .mail-item .time-container {
+        position: static
+    }
+    .view-account .content-panel .mails-wrapper .mail-item .time-container .time {
+        width: auto;
+        text-align: left
+    }
+    }
+    
+    @media (min-width:768px) {
+    .view-account .side-bar .user-info {
+        padding: 0;
+        padding-bottom: 15px
+    }
+    .view-account .mail-subject .subject {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    }
+    
+    @media (min-width:992px) {
+    .view-account .content-panel {
+        min-height: 800px;
+        border-left: 1px solid #f3f3f7;
+        margin-left: 200px
+    }
+    .view-account .mail-subject .subject {
+        max-width: 280px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    }

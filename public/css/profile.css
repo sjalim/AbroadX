@@ -1,0 +1,20 @@
+.profile-pic{
+    width: 30%;
+}
+
+.show{
+    display: inline-block;
+}
+
+.edit{
+    /*width: 50%;*/
+}
+
+.avatar-ctn{
+    text-align: center;
+}
+
+.profile-body{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}

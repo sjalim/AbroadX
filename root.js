@@ -2,12 +2,15 @@ const express = require("express");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
 const path = require("path");
+const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 
 dotenv.config({
         path: "./.env"
 });
 
 const app = express();
+
 
 
 
@@ -30,7 +33,12 @@ app.use(express.urlencoded({
 //font data to back
 app.use(express.json());
 
+//cookie grab
+app.use(cookieParser());
+
 app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 
 db.connect( (error) => {
  if(error)
