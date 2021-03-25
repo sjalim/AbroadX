@@ -1,15 +1,107 @@
 .page-title{
-
+    font-family: 'Raleway', sans-serif;
 }
 
 .page-title h1{
     font-size: 2.4375rem;
     margin: 15px 0 0;
-    color: #584527;
+    color: #0D243D;
 }
 
 .page-title span{
-
    display: block;
-    color: #6f6d6a;
+    color: #395D70;
+}
+
+#search_btn{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: hidden;
+    /*font-family: Raleway, 'sans-serif';*/
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    min-height: 40px;
+    padding: 5px 20px;
+    color: #fff;
+    background-color: #2870BD;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    background-image: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#categories{
+    display: inline-block;
+}
+.filter{
+    display: inline-block;
+}
+
+
+.search_content{
+    text-align:center;
+}
+
+
+.container{
+    font-family: Raleway, 'sans-serif';
+}
+#program #area{
+    font-family: 'Playfair Display', serif;;
+}
+
+select {
+
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #2c3e50 none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+/* Custom Select */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #2c3e50;
+    overflow: hidden;
+    border-radius: .25em;
+}
+select {
+    flex: 1;
+    padding: 0 .5em;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #D0E2F4;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+    color: #FFFFFF;
 }
