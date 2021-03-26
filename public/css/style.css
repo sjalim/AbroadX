@@ -1,3 +1,13 @@
+/*html {*/
+/*  position: relative;*/
+/*  min-height: 100%;*/
+/*}*/
+
+
+/*.page-container {*/
+/*  position: relative;*/
+/*  min-height: 100vh;*/
+/*}*/
 
 .header-area .header-top {
     background: #0d2d3e;
@@ -49,23 +59,29 @@
     padding-bottom: 4%;
   }
 
-  .gridBox {
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#services [class*="col-"] {
+  margin-bottom: 20px;
+}
+
+.gridBox {
     background-color: white;
     margin-bottom: 20px;
     transition: ease-out 0.8s;
-  }
-
-  .gridBox:hover {
-    box-shadow: inset 0 0 0 500px #ff7d7a;
-  }
-
-  .gridContent{
     height: 100%;
     text-align: center;
     border-style: solid;
     border-width: 4px;
     border-color: #0d2d3e;
     padding: 10%;
+  }
+
+  .gridBox:hover {
+    box-shadow: inset 0 0 0 500px #ff7d7a;
   }
 
   .services_title{
@@ -106,6 +122,15 @@
 
   /* Footer section */
 
+#footer {
+  position: absolute;
+  width: 100%;
+  background-color: #0d2d3e;
+  padding: 1% 5%;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+
   .footer-container {
      max-width: 1170px;
      margin: auto;
@@ -114,12 +139,6 @@
   
   .footer-col ul {
     list-style: none;
-  }
-  #footer {
-    background-color: #0d2d3e;
-    padding: 1% 5%;
-    line-height: 1.5;
-    font-family: 'Poppins', sans-serif;
   }
 
   .footer-col {
@@ -172,11 +191,11 @@
     display: inline-block;
     height: 40px;
     width: 40px;
-    background-color: rgba(255,255,255,0,2);
+    background-color: rgba(255,255,255,0.2);
     margin: 0 10px 10px 0;
     text-align: center;
     line-height: 40px;
-    border-radius: 50%;
+    border-radius: 100%;
     color: white;
     transition: all 0.5s ease;
   }
