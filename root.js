@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
+const _ = require("lodash");
+
 const fileUploader = require('express-fileupload');
 dotenv.config({
         path: "./.env"
@@ -57,6 +59,14 @@ app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 app.use('/admin',require('./routes/admin'));
 app.use('/data',require('./routes/data'));
+app.use('/', require('./routes/blog'));
+app.use('/', require('./routes/scholarship'));
+
+
+app.use(function(req, res, next){
+    res.locals.user = req.user;
+    next();
+});
 
 app.listen(5000 ,() =>{
         console.log("server started at 5000...");
