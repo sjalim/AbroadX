@@ -35,3 +35,64 @@ section{
 .varsity_name{
     display: inline-block;
 }
+
+#content-phd{
+    transition: ease-out 0.8s;
+}
+
+#content-bachelor{
+    transition: ease-out 0.8s;
+}
+
+#content-master{
+    transition: ease-out 0.8s;
+}
+
+#content-total{
+    transition: ease-out 0.8s;
+}
+
+#content-phd:hover{
+    box-shadow: inset 0 0 0 500px #0F75A8;
+}
+
+#content-master:hover{
+    box-shadow: inset 0 0 0 500px #0F75A8;
+}
+
+#content-bachelor:hover{
+    box-shadow: inset 0 0 0 500px #0F75A8;
+}
+
+#content-total:hover{
+    box-shadow: inset 0 0 0 500px #0F75A8;
+}
+
+.button-grp{
+    text-align: right;
+}
+
+.button{
+    width: 100px;
+    height: 50px;
+}
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    transition-delay: 0.8s;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
