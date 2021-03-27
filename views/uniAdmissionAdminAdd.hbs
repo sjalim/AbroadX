@@ -35,11 +35,11 @@
 <section>
 
     <div class="container">
-        <form action="/admin/">
+        <form action="/data/add_new_varsity_record" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="subject">Level:</label>
+                <label for="level">Level:</label>
                 <br>
-                <select name="subject" class="form-control" >
+                <select name="level" class="form-control">
                     <option value="0">Bachelor</option>
                     <option value="1">Master</option>
                     <option value="2">PhD</option>
@@ -48,73 +48,80 @@
             <div class="form-group">
                 <label for="area">Area:</label>
                 <br>
-                <select name="area" class="form-control" >
+                <select name="area" class="form-control">
                     //for loop
-                    <option value="area_name"></option>
+
+                    {{#each areaResults}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                    {{/each}}
                 </select>
             </div>
             <div class="form-group">
                 <label for="university">University:</label>
                 <br>
-                <select name="university" class="form-control" >
+                <select name="university" class="form-control">
                     //for loop
 
                     {{#each results}}
 
-                    <option value={{this.id}}>{{this.name}}</option>
+                        <option value="{{this.name}}">{{this.name}}</option>
                     {{/each}}
 
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <br>
+                <input type="text" name="subject" class="form-control">
+            </div>
             <div class="form-group">
                 <label for="post">Post:</label>
                 <br>
-                <textarea name="post" class="form-control" >You will bridge the gap between quantitative and molecular
-                    genetics which are needed competence in the future. You can compose your own
-                    study plan with several courses in quantitative and molecular genetics. Some recommended courses are: Molecular Biology,
-                Models and Algorithms in Bioinformatics, Genome Anal</textarea>
+                <textarea name="post" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="date">Application Deadline:</label>
                 <br>
-                <input type="date" name="date" class="form-control" >
+                <input type="date" name="date" class="form-control">
             </div>
             <div class="form-group">
                 <label for="formal_prereq">Formal Prerequisite:</label>
                 <br>
-                <textarea name="formal_prereq" class="form-control" >blah blah</textarea>
+                <textarea name="formal_prereq" class="form-control" ></textarea>
             </div>
             <div class="form-group">
                 <label for="tuition_fee">Tuition:</label>
                 <br>
-                <textarea name="tuition_fee" class="form-control" >blah blah</textarea>
+                <textarea name="tuition_fee" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="degree_level">Degree Level:</label>
                 <br>
-                <input type="text" name="degree_level" class="form-control" >
+                <input type="text" name="degree_level" class="form-control">
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
-                <br> <input type="text" name="city"class="form-control" >
+                <br> <input type="text" name="city" class="form-control">
             </div>
             <div class="form-group">
                 <label for="credit">Credit:</label>
                 <br>
-                <input type="number" name="credit" class="form-control" >
+                <input type="number" name="credit" class="form-control">
             </div>
             <div class="form-group">
                 <label for="language">Language:</label>
                 <br>
-                <input type="text" name="language" class="form-control" >
+                <input type="text" name="language" class="form-control">
             </div>
             <button type="submit" class="add_btn">Add</button>
 
         </form>
     </div>
 
-
-
+    {{#if message}}
+        <h4 class="alert-info"> {{message}}</h4>
+    {{/if}}
 </section>
 </body>
 </html>

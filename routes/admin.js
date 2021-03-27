@@ -9,13 +9,35 @@ router.get("/", (req, res) => {
     res.render("admin.hbs");
 });
 
-router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, (req, res) => {
+router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
 
     console.log("admin");
-    if (req.results) {
+
+
+    if (req.results && req.areaResults) {
+
+        // req.session.valid = null;
         res.render("uniAdmissionAdminAdd.hbs", {
-            results: req.results
+            results: req.results,
+            areaResults: req.areaResults
         });
+
+
+        // let message = req.session.valid;
+        // if (message) {
+        //
+        //     res.render("uniAdmissionAdminAdd.hbs", {
+        //         results: req.results,
+        //         areaResults: req.areaResults,
+        //         message: message
+        //     });
+        // } else {
+        //     req.session.valid = null;
+        //     res.render("uniAdmissionAdminAdd.hbs", {
+        //         results: req.results,
+        //         areaResults: req.areaResults
+        //     });
+        // }
 
     } else {
         res.redirect("/uniAdmissionAdminAdd");
