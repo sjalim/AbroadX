@@ -38,24 +38,24 @@
 
     <div class="container">
         <div class="row">
-            <div class=" col-md-12 col-lg-2 content " id="content-total">
+            <div class=" col-md-12 col-lg-2 content">
 
                 <img src="https://img.icons8.com/dotty/80/000000/people-working-together.png">
                 <br>
                 <label>Total</label>
             </div>
 
-            <div class="col-md-12 col-lg-2 content " id="content-bachelor">
+            <div class="col-md-12 col-lg-2 content ">
                 <img src="https://img.icons8.com/wired/64/000000/student-center.png"/>
                 <br>
                 <label>Bachelor</label>
             </div>
-            <div class="col-md-12 col-lg-2 content" id="content-master">
+            <div class="col-md-12 col-lg-2 content">
                 <img src="https://img.icons8.com/ios/50/000000/university.png"/>
                 <br>
                 <label>Master</label>
             </div>
-            <div class="col-md-12 col-lg-2 content " id="content-phd">
+            <div class="col-md-12 col-lg-2 content">
                 <img src="https://img.icons8.com/dotty/80/000000/admission.png"/>
                 <br>
                 <label>Phd</label>
@@ -63,130 +63,60 @@
 
         </div>
 
-        <div class="button-grp">
-            <button class="btn-secondary button">Update</button>
-            <button class="btn-secondary button">Delete</button>
+
+
+<div>
+    <button>Update</button>
+    <button>Delete</button>
+    <form>
+
+
+        <button> Save</button>
+        <button>Cancel</button>
+    </form>
+
+
+</div>
+        <div>
+            <h3>Massege</h3>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-        <div class="container">
-            <form action="/data/add_new_varsity_record" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="level">Level:</label>
-                    <br>
-                    <select name="level" class="form-control">
-                        <option value="0">Bachelor</option>
-                        <option value="1">Master</option>
-                        <option value="2">PhD</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="area">Area:</label>
-                    <br>
-                    <select name="area" class="form-control">
-                        //for loop
-
-                        {{#each areaResults}}
-                            <option value="{{this.name}}">{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="university">University:</label>
-                    <br>
-                    <select name="university" class="form-control">
-                        //for loop
-
-                        {{#each results}}
-
-                            <option value="{{this.name}}">{{this.name}}</option>
-                        {{/each}}
-
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subject:</label>
-                    <br>
-                    <input type="text" name="subject" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="post">Post:</label>
-                    <br>
-                    <textarea name="post" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="date">Application Deadline:</label>
-                    <br>
-                    <input type="date" name="date" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="formal_prereq">Formal Prerequisite:</label>
-                    <br>
-                    <textarea name="formal_prereq" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="tuition_fee">Tuition:</label>
-                    <br>
-                    <textarea name="tuition_fee" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="degree_level">Degree Level:</label>
-                    <br>
-                    <input type="text" name="degree_level" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="city">City:</label>
-                    <br> <input type="text" name="city" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="credit">Credit:</label>
-                    <br>
-                    <input type="number" name="credit" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="language">Language:</label>
-                    <br>
-                    <input type="text" name="language" class="form-control">
-                </div>
-                <button type="submit" class="add_btn">Add</button>
-
-            </form>
-        </div>
-    </div>
-    <div>
-        <h3>Massege</h3>
-    </div>
 
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-sm-12 ">
-                <div class="checkbox">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkbox">
-                    <label for="checkbox">Id</label>
-                </div>
-                <label for="record">Applied Chemistry</label>
-                <div class="degree_type_img">
-                    <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
-                    <h6>Bachelor</h6>
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="checkbox">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkbox">
+                        <label for="checkbox">Id</label>
+                    </div>
+                    <label for="record">Applied Chemistry</label>
+                    <div class="degree_type_img">
+                        <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
+                        <h6>Bachelor</h6>
 
-                </div>
-                <div class="varsity_name">
-                    <h3>
-                        Norway University
-                    </h3>
+                    </div>
+                    <div class="varsity_name">
+                        <h3>
+                            Norway University
+                        </h3>
+                    </div>
+
                 </div>
 
             </div>
 
+
         </div>
-
-
     </div>
-
 </section>
+
+
+
+
+
+
+
 
 
 
@@ -199,7 +129,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="/js/uniAdmissionAdminEdit.js"></script>
 
 </body>
 </html>
