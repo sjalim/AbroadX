@@ -1,0 +1,61 @@
+#scholarship-section {
+    background: #f1f6fb;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    padding: 3% 10%;
+}
+
+.scholarship-title {
+    text-align: center;
+    padding: 2% 0;
+}
+.scholarship-title h1 {
+    font-size:2rem;
+}
+
+.scholarship-details{
+    padding:5%;
+    margin-bottom:30px;
+    background-color:#ffffff;
+    border-radius:5px;
+    -webkit-box-shadow:0px 10px 20px rgba(5, 66, 125, 0.08);
+    box-shadow:0px 10px 20px rgba(5, 66, 125, 0.08);
+    position:relative;
+}
+
+.scholarship-details p{
+    font-size: 1rem;
+}
+
+.scholarship-details img{
+    max-width:100%;
+    height: auto;
+}
+
+.scholarship-details .scholarship-item{
+    margin-bottom:30px;
+    word-wrap: break-word;
+}
+
+.scholarship-details .scholarship-item h3{
+    font-size: 1.3rem;
+    line-height:22px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:#171A1F;
+    position:relative;
+}
+.scholarship-details .scholarship-item ul{
+    margin-bottom:20px;
+}
+.scholarship-details .scholarship-item ul br, .scholarship-details .scholarship-item ol br {
+    display: none;
+}
+.scholarship-details .scholarship-item ul li{
+    font-size: 1rem;
+    line-height:25px;
+    margin-bottom:7px;
+    position:relative;
+    padding-left:17px;
+    word-wrap: break-word;
+}

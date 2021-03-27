@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/blog_details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-container">
+
+    <!-- Nav Bar -->
+    <%- include("navbar") -%>
+
+    <!-- Blog Details Section -->
+    <section id="blog-details">
+
+        <div class="feature-img">
+            <img class="img-class" src="<%= blog.blogImage %>" alt="">
+        </div>
+        <div class="blog_body">
+            <h2> <%= blog.blogTitle %> </h2>
+            <p> <%= blog.blogDescription %> </p>
+        </div>
+
+    </section>
+
+    <!-- Footer section -->
+    <%- include("footer") -%>
+
+</div>
+
+
+<!-- jQuery Here -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
