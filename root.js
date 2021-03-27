@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
-
+const fileUploader = require('express-fileupload');
 dotenv.config({
         path: "./.env"
 });
@@ -36,6 +36,9 @@ app.use(express.json());
 //cookie grab
 app.use(cookieParser());
 
+app.use(fileUploader());
+
+
 app.set('view engine', 'hbs');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -53,6 +56,7 @@ db.connect( (error) => {
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 app.use('/admin',require('./routes/admin'));
+app.use('/data',require('./routes/data'));
 
 app.listen(5000 ,() =>{
         console.log("server started at 5000...");
