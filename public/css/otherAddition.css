@@ -1,0 +1,8 @@
+
+.image_preview{
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    border: 2px solid  grey;
+    margin-top: 20px;
+}

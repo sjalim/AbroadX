@@ -1,0 +1,37 @@
+
+
+
+@media (min-width: 768px){
+
+}
+.content{
+    border: 2px solid grey;
+    text-align: center;
+    margin: 20px;
+
+}
+
+.content img{
+    width: 100px;
+    height: 100px;
+}
+
+section{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 900;
+}
+
+.checkbox{
+    display: inline-block;
+    padding: 20px;
+}
+.degree_type_img{
+
+    display: inline-block;
+    /*margin-top: 50px;*/
+
+}
+
+.varsity_name{
+    display: inline-block;
+}
