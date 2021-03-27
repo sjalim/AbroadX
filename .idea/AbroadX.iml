@@ -11,5 +11,8 @@
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="line-awesome" level="application" />
     <orderEntry type="library" name="a076d05399" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.2.1.slim" level="application" />
+    <orderEntry type="library" name="89de733934" level="application" />
   </component>
 </module>
