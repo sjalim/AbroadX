@@ -32,6 +32,11 @@ body{
     text-align: center;
     color: #0d2d3e;
 }
+.contact-form h4{
+    margin-bottom: 8%;
+    text-align: center;
+    color: #0d2d3e;
+}
 
 .form-group {
     padding: 2%;
