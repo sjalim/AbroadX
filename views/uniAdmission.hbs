@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/uniAdmission.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/uniAdmission.css">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Raleway:wght@800&display=swap"
+          rel="stylesheet">
 
 </head>
 <body>
@@ -42,13 +44,13 @@
 
                 {{#if user}}
 
-                <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
-                <a class="nav-link nav_bar_features btn btn-sm" href="/">Logout</a>
+                    <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
+                    <a class="nav-link nav_bar_features btn btn-sm" href="/auth/logout">Logout</a>
 
                 {{else}}
 
                     <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>
-                <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
+                    <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
 
                 {{/if}}
 
@@ -59,24 +61,95 @@
 </nav>
 
 
+<div class="container">
 
-    
+
     <div class="page-title">
 
         <h1>
             <span>FIND YOUR</span>
-            PROGRAMME 
-            OF STUDY
+            PROGRAMME<br>
+            OF STUDY.
         </h1>
 
     </div>
 
 
+    <form class="search_content" >
+        <div class="form-group filter" id="level_category">
+            <label for="program" >Level</label><br>
+            <div class="select">
+
+                <select id="program" name="program" >
+                    <option selected disabled>Choose level...</option>
+                    <option value="15">Master</option>
+                    <option value="16">Bachelor</option>
+                    <option value="17">PhD</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group filter" id="area_category" >
+            <label for="area">Subject Area</label><br>
+
+            <div class="select">
 
 
+                <select id="area" name="area">
+                    <option selected disabled>Choose subject area..</option>
+                    <option value="18">General Programmes</option>
+                    <option value="19">Education</option>
+                    <option value="20">Humanities and Arts</option>
+                    <option value="21">Social sciences, Business and Law</option>
+                    <option value="22">Science, Mathematics and Computing</option>
+                    <option value="23">Engineering, Manufacturing and Construction</option>
+                    <option value="24">Agriculture and Veterinary</option>
+                    <option value="25">Health and Welfare</option>
+                    <option value="26">Services</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group filter" >
+
+            <button type="submit" id="search_btn">SEARCH</button>
+        </div>
 
 
+        <section>
 
+            <ul>
+
+                <li>
+                    <div>
+                        <div>
+                            <h1>applied chemistry</h1>
+                        </div>
+                        <div>
+                            <img src="">
+                        </div>
+                        <div>
+                            <h4></h4>
+                        </div>
+
+
+                    </div>
+
+
+                </li>
+
+
+            </ul>
+
+
+        </section>
+
+
+    </form>
+
+
+</div>
 <!-- Footer section -->
 <footer id="footer">
     <div class="container footer-container">
@@ -119,14 +192,13 @@
 </footer>
 
 
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>

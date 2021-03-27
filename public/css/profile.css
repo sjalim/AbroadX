@@ -18,3 +18,18 @@
     margin-top: 50px;
     margin-bottom: 100px;
 }
+#update-btn {
+    background-color: #6e7582;
+    width: 150px;
+    border-radius: 50px;
+    margin-left: 87%;
+    margin-top: 50px;
+    border: transparent;
+    box-shadow: grey ;
+}
+
+#country-code{
+
+    margin-top: 5px;
+
+}

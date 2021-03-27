@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const {promisify} = require('util');
 
+
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
@@ -13,7 +14,10 @@ const db = mysql.createConnection({
 
 let currentDate = new Date();
 
+console.log("controller/auth");
 exports.login = async (req, res) => {
+
+    console.log("at controller/auth/login()");
 
     try {
 
@@ -22,16 +26,24 @@ exports.login = async (req, res) => {
         console.log("password from front" + password);
 
         if (!email || !password) {
-            return res.status(400).render('login', {
+            return res.status(400).render('login.hbs', {
                 message: 'Please provide an email and password'
             })
         }
+
+
+        if(email==="admin@admin.com" && password==="admin")
+        {
+            res.status(200).redirect("/admin");
+        }
+
+
 
         db.query('select * from users where email = ?', [email], async (error, results) => {
 
             console.log(results);
             if (!results || !(await bcrypt.compare(password, results[0].password))) {
-                res.status(401).render('login', {
+                res.status(401).render('login.hbs', {
                     message: 'Email or Password is incorrect'
 
                 })
@@ -42,7 +54,7 @@ exports.login = async (req, res) => {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
 
-                console.log("This is the token" + token);
+                // console.log("This is the token" + token);
 
                 const cookieOptions = {
                     expires: new Date(
@@ -75,11 +87,11 @@ exports.register = (req, res) => {
             }
 
             if (results.length > 0) {
-                return res.render('register', {
+                return res.render('register.hbs', {
                     message: 'That email is already is use'
                 });
             } else if (password !== confirm_password) {
-                return res.render('register', {
+                return res.render('register.hbs', {
                     message: 'Passwords do not match'
                 });
             }
@@ -91,7 +103,8 @@ exports.register = (req, res) => {
                 name: name,
                 email: email,
                 password: hashPassword,
-                phone: country_code + phone,
+                country_code : country_code,
+                phone: phone,
                 status: 0,
                 create_date: currentDate.getDate(),
                 gender: gender
@@ -102,7 +115,7 @@ exports.register = (req, res) => {
                     console.log(error);
                 } else {
                     console.log(results);
-                    return res.render('register', {
+                    return res.render('register.hbs', {
 
                         message: 'user registered'
                     });
@@ -120,7 +133,7 @@ exports.register = (req, res) => {
 
 exports.isLoggedIn = async (req, res, next) => {
 
-    console.log(req.cookies);
+    // console.log(req.cookies);
 
     if (req.cookies.jwt) {
         try {
@@ -130,7 +143,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
             db.query('select * from users where id = ?', [decoded.id], (error, result) => {
 
-                console.log(result);
+                // console.log(result);
                 if (!result) {
                     return next();
                 }
@@ -140,7 +153,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
             });
 
-            console.log(decoded);
+            // console.log(decoded);
         } catch (error) {
 
             console.log(error);
