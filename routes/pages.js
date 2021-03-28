@@ -6,6 +6,7 @@ const authController = require('../controllers/auth');
 const contactUsController = require('../controllers/contact_us');
 const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
+const uniEditController = require('../controllers/uniAdmissionAdminEdit');
 
 
 router.get("/", authController.isLoggedIn, (req, res) => {
@@ -68,6 +69,21 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
         res.redirect("/login");
     }
 });
+
+
+//go to update university details
+router.get("/uni_update_details/:uni_subject_id/:level",uniEditController.retrieveRecordDataUpdateDelete,(req,res)=>{
+
+    res.render("editUpdateUni.hbs");
+
+});
+
+//go to delete university details
+router.get("/uni_delete_details/:uni_subject_id/:level",uniEditController.retrieveRecordDataUpdateDelete,(req,res)=>{
+
+    res.render("editDeleteUni.hbs");
+});
+
 
 /*----------Blogs-----------*/
 router.get("/blog", authController.isLoggedIn,blogController.showBlogs,

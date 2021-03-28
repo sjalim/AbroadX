@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://kit.fontawesome.com/89de733934.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet"
+          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+</head>
+<body>
+
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+    <header>My App</header>
+    <ul>
+        <li><a href="/admin"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+        <li><a href="/admin/uniAdmissionAdminEdit"><i class="fas fa-edit"></i>Edit Uni-Admission</a></li>
+        <li><a href="/admin/uniAdmissionAdminAdd"><i class="fas fa-plus"></i>Add Uni-Admission</a></li>
+        <li><a href="/admin/otherAddition"><i class="fas fa-calendar-week">Other Addition</i></a></li>
+        <li><a href="#"><i class="far fa-question-circle"></i>About</a></li>
+        <li><a href="#"><i class="fas fa-pro"></i>Services</a></li>
+        <li><a href="#"><i class="far fa-snout"></i>logout</a></li>
+
+    </ul>
+</div>
+<section>
+    <div class="container alert-danger" id="delete_section">
+        <form id="delete_form">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <label for="record">Applied Chemistry</label>
+                    <div class="degree_type_img">
+                        <h6>Bachelor</h6>
+                    </div>
+                    <div class="varsity_name">
+                        <h3>
+                            Norway University
+                        </h3>
+                    </div>
+                    is deleting
+                </div>
+            </div>
+            <button type="submit" class="confirm_button btn-secondary">Confirm</button>
+            <button type="button" id="cancel_button_delete">Cancel</button>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

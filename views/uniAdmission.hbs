@@ -75,12 +75,12 @@
     </div>
 
 
-    <form class="search_content" >
+    <form class="search_content">
         <div class="form-group filter" id="level_category">
-            <label for="program" >Level</label><br>
+            <label for="program">Level</label><br>
             <div class="select">
 
-                <select id="program" name="program" >
+                <select id="program" name="program">
                     <option selected disabled>Choose level...</option>
                     <option value="15">Master</option>
                     <option value="16">Bachelor</option>
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="form-group filter" id="area_category" >
+        <div class="form-group filter" id="area_category">
             <label for="area">Subject Area</label><br>
 
             <div class="select">
@@ -111,45 +111,47 @@
             </div>
 
         </div>
-        <div class="form-group filter" >
+        <div class="form-group filter">
 
             <button type="submit" id="search_btn">SEARCH</button>
         </div>
 
 
-        <section>
-
-            <ul>
-
-                <li>
-                    <div>
-                        <div>
-                            <h1>applied chemistry</h1>
-                        </div>
-                        <div>
-                            <img src="">
-                        </div>
-                        <div>
-                            <h4></h4>
-                        </div>
-
-
-                    </div>
-
-
-                </li>
-
-
-            </ul>
-
-
-        </section>
-
 
     </form>
-
-
 </div>
+<section class="info_row_section">
+
+
+    <div class="container">
+        <div class="row" id="all_rows">
+            <!--            {{!#each universityData}}-->
+            <!--                    {{!#ifCond currentType '==' "Total"}}-->
+            <div class="col-sm-12 info_row " id="column">
+
+                <label for="record">{{!this.subject}}</label>
+                <div class="degree_type_img">
+                    <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
+
+                    <h6>{{!this.level}}</h6>
+                </div>
+                <div class="varsity_name">
+                    <h3>
+                        {{!this.university}}
+                    </h3>
+                </div>
+
+
+
+            </div>
+            <!--                    {{!/ifCond}}-->
+            {{!/each}}
+        </div>
+    </div>
+
+</section>
+
+
 <!-- Footer section -->
 <footer id="footer">
     <div class="container footer-container">

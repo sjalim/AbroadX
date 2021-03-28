@@ -78,7 +78,7 @@ exports.admissionRecordStore = async (req, res) => {
                     }
                 });
             }
-            else if(level===2){
+            else if(level==="2"){
                 db.query('insert into phd set ?',{
                     subject:subject,
                     area:area,
@@ -121,9 +121,7 @@ exports.admissionRecordStore = async (req, res) => {
     }
 
 };
-
 exports.getUniList = async (req, res, next) => {
-
 
     db.query('select id, name from university_list', async (error, results) => {
 
