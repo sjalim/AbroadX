@@ -5,6 +5,8 @@ const path = require("path");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const _ = require("lodash");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const fileUploader = require('express-fileupload');
 dotenv.config({
@@ -39,6 +41,14 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(fileUploader());
+
+app.use(session({
+    secret: `secret`,
+    cookie: { maxAge: 6000},
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
 
 
 app.set('view engine', 'hbs');

@@ -24,13 +24,21 @@
 
     <!-- Blog Details Section -->
     <section id="blog-details">
+        <% if(checkAdmin) { %>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/blog_admin">Blog Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                </ol>
+            </nav>
+        <% } %>
 
         <div class="feature-img">
-            <img class="img-class" src="<%= blog.blogImage %>" alt="">
+            <img class="img-class" src="http://localhost:5000/img/blogs/<%= blog.blogImage %>" alt="">
         </div>
         <div class="blog_body">
             <h2> <%= blog.blogTitle %> </h2>
-            <p> <%= blog.blogDescription %> </p>
+            <p> <%- blog.blogDescription %> </p>
         </div>
 
     </section>
@@ -39,7 +47,6 @@
     <%- include("footer") -%>
 
 </div>
-
 
 <!-- jQuery Here -->
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>

@@ -1,12 +1,15 @@
 const nodemailer = require("nodemailer");
 
 exports.contactForm = async (req, res) => {
-    const name = req.body.txtName;
-    const email = req.body.txtEmail;
-    const phone = req.body.txtPhone;
-    const text = req.body.txtMsg;
+    var message = ``;
 
-    console.log(req.body);
+    if(req.method === "POST") {
+        const name = req.body.txtName;
+        const email = req.body.txtEmail;
+        const phone = req.body.txtPhone;
+        const text = req.body.txtMsg;
+
+        console.log(req.body);
         if(!name || !email || !phone || !text) {
             console.log("Values null");
             return  res.render('contact_us', {
@@ -40,6 +43,12 @@ exports.contactForm = async (req, res) => {
                 user: req.user
             })
         }
+    }
+    else {
+        res.render('contact_us', {
+            message: message,
+            user: req.user
+        });
+    }
 
 }
-exports.contactForm().catch(console.error)

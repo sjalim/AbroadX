@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin Panel</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/team_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/89de733934.js"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+
+
+<div class="sidebar">
+    <header>Team</header>
+    <ul>
+        <li><a href="/admin"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+        <li><a href="/admin/uniAdmissionAdminEdit"><i class="fas fa-edit"></i>Edit Uni-Admission</a></li>
+        <li><a href="/admin/uniAdmissionAdminAdd"><i class="fas fa-plus"></i>Add Uni-Admission</a></li>
+        <li><a href="/admin/otherAddition"><i class="fas fa-calendar-week">Other Addition</i></a></li>
+        <li><a href="/admin/blog_admin"><i class="fab fa-blogger-b"></i>Blog</a></li>
+        <li><a href="/admin/scholarship_admin"><i class="fas fa-funnel-dollar"></i>Scholarship</a></li>
+        <li><a href="/admin/team_admin"><i class="fas fa-users"></i>Team</a></li>
+        <li><a href="#"><i class="fas fa-pro"></i>Services</a></li>
+        <li><a href="#"><i class="far fa-snout"></i>logout</a></li>
+
+    </ul>
+</div>
+
+<section id="team-admin">
+    <% if(message.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <strong> <%- message %> </strong>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-6"><h3>Team Members</h3></div>
+        <div class="col-6 d-flex justify-content-end">
+            <a href="/admin/team_admin/add_team" type="button" class="btn btn primary add-button align-self-center"><i
+                        class="fas fa-plus-circle"></i>Add team member</a>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Member Name</th>
+            <th scope="col">Member Designation</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">Github</th>
+            <th scope="col">Linkedin</th>
+            <th scope="col" class="text-end">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% var i = 1 %>
+        <% listOfMembers.forEach(function (member) { %>
+
+            <tr>
+                <th scope="row"><%= i++ %></th>
+                <td> <%= member.memberName %> </td>
+                <td> <%= member.memberDesignation %>  </td>
+                <td><%= member.fbId %> </td>
+                <td><%= member.githubId %> </td>
+                <td><%= member.linkedinId %> </td>
+                <td class="text-end">
+                    <a href="/admin/team_admin/edit_team/<%= member.memberId %>" type="button"
+                       class="btn btn-light btn-small"><i class="fas fa-edit"></i>Edit</a>
+                    <a href="/admin/team_admin/<%= member.memberId %>" type="button" class="btn btn-light btn-small"><i
+                                class="fas fa-trash"></i></i>Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</section>
+<!-- jQuery Here -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>
+
+
+</body>
+</html>

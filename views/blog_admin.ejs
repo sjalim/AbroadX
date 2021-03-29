@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin Panel</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/blog_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/89de733934.js"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<input type="checkbox" id="check">
+<label for="check">
+    <i class="fas fa-bars" id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
+</label>
+
+
+<div class="sidebar">
+    <header>Blog</header>
+    <ul>
+        <li><a href="/admin"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+        <li><a href="/admin/uniAdmissionAdminEdit"><i class="fas fa-edit"></i>Edit Uni-Admission</a></li>
+        <li><a href="/admin/uniAdmissionAdminAdd"><i class="fas fa-plus"></i>Add Uni-Admission</a></li>
+        <li><a href="/admin/otherAddition"><i class="fas fa-calendar-week">Other Addition</i></a></li>
+        <li><a href="/admin/blog_admin"><i class="fab fa-blogger-b"></i>Blog</a></li>
+        <li><a href="/admin/scholarship_admin"><i class="fas fa-funnel-dollar"></i>Scholarship</a></li>
+        <li><a href="#"><i class="far fa-question-circle"></i>About</a></li>
+        <li><a href="#"><i class="fas fa-pro"></i>Services</a></li>
+        <li><a href="#"><i class="far fa-snout"></i>logout</a></li>
+
+    </ul>
+</div>
+
+<section id="blog-admin">
+    <% if(message.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <strong> <%- message %> </strong>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-6"><h3>Blogs</h3></div>
+        <div class="col-6 d-flex justify-content-end">
+            <a href="/admin/blog_admin/add_blog" type="button" class="btn btn primary add-button align-self-center"><i
+                        class="fas fa-plus-circle"></i>Add Blog</a>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Added On</th>
+            <th scope="col" class="text-end">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% var i = 1 %>
+        <% listOfBlogs.forEach(function (blog) { %>
+
+            <tr>
+                <th scope="row"><%= i++ %></th>
+                <td> <%= blog.blogId %> </td>
+                <td> <%= blog.blogTitle %>  </td>
+                <!--Converting to DateFormat-->
+                <% const date = new Date(blog.blogDate); %>
+                <% var convertedDate = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(); %>
+                <td><%= convertedDate %> </td>
+                <td class="text-end">
+                    <a href="/admin/blog_admin/blog_details/<%= blog.blogId %>" type="button"
+                       class="btn btn-light btn-small"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+                    <a href="/admin/blog_admin/edit_blog/<%= blog.blogId %>" type="button"
+                       class="btn btn-light btn-small"><i class="fas fa-edit"></i>Edit</a>
+                    <a href="/admin/blog_admin/<%= blog.blogId %>" type="button" class="btn btn-light btn-small"><i
+                                class="fas fa-trash"></i></i>Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</section>
+<!-- jQuery Here -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>
+
+
+</body>
+</html>

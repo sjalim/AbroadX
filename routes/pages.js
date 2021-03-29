@@ -2,29 +2,41 @@ const express = require('express');
 const _ = require("lodash");
 const router = express.Router();
 
+const indexController = require('../controllers/index');
 const authController = require('../controllers/auth');
 const contactUsController = require('../controllers/contact_us');
 const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
+const teamController = require('../controllers/team');
+const aboutController = require('../controllers/about_us');
 
 
-router.get("/", authController.isLoggedIn, (req, res) => {
-
+router.get("/", authController.isLoggedIn, indexController.counter, (req, res) => {
     res.render("index.ejs",{
-        user : req.user
+        user : req.user,
+        countUniversities: totalUniversities,
+        countScholarships: totalScholarships,
+        countTopics: totalTopics
     });
 });
 
 router.get("/contact_us",authController.isLoggedIn, contactUsController.contactForm, (req, res) => {
     res.render("contact_us.ejs",{
         user : req.user,
-        message: req.message
+        message: message
     });
 });
 
-router.get("/about_us", authController.isLoggedIn, (req, res) => {
-
+router.get("/about_us", authController.isLoggedIn, aboutController.showAboutUs,(req, res) => {
     res.render("about_us.ejs",{
+        aboutUs: rows[0],
+        user : req.user
+    });
+});
+
+router.get("/team", authController.isLoggedIn, teamController.showTeamMembers, (req, res) => {
+    res.render("team.ejs",{
+        listOfMembers: rows,
         user : req.user
     });
 });
@@ -69,7 +81,7 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
     }
 });
 
-/*----------Blogs-----------*/
+/**-----------------Blogs-----------------**/
 router.get("/blog", authController.isLoggedIn,blogController.showBlogs,
     (req, res) => {
     res.render("blog.ejs",{
@@ -84,7 +96,8 @@ router.get("/blog/blog_details/:id", authController.isLoggedIn,blogController.sh
     (req, res) => {
     res.render("blog_details.ejs",{
         blog: rows[0],
-        user : req.user
+        user : req.user,
+        checkAdmin: false
     });
 });
 // Delete blog
@@ -95,7 +108,7 @@ router.get("/blog/blog_details/:id", authController.isLoggedIn,blogController.sh
 //     });
 // });
 
-/*--------Scholarship---------*/
+/**--------------Scholarship--------------**/
 router.get("/scholarship", scholarshipController.showScholarships,
     (req, res) => {
     if (req.user) {
@@ -116,7 +129,8 @@ router.get("/scholarship/scholarship_details/:id", scholarshipController.showSch
         if (req.user) {
             res.render("scholarship_details.ejs",{
                 scholarship_details: rows[0],
-                user : req.user
+                user : req.user,
+                checkAdmin: false
             });
         }
         else {

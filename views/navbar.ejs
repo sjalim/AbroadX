@@ -13,15 +13,12 @@
                 <a class="nav-link nav_bar_features" href="#">FAQ</a>
                 <a class="nav-link nav_bar_features" href="/blog">Blog</a>
                 <a class="nav-link nav_bar_features" href="#">Community</a>
-<!--                <a class="nav-link nav_bar_features" href="/edit_profile">Your Profile</a>-->
-<!--                <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>-->
-<!--                <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>-->
               <%  if(user) {     %>
                     <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
-                    <a class="nav-link nav_bar_features btn btn-sm" href="/auth/logout">Logout</a>
+                    <a class="nav-link nav_bar_features" href="/auth/logout">Logout</a>
                <%} else { %>
-                    <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>
-                    <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
+                    <a class="nav-link nav_bar_features" href="/login">Sign In</a>
+                    <a class="nav-link nav_bar_features" href="/register">Sign Up</a>
                <% } %>
 
 
