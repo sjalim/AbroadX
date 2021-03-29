@@ -3,6 +3,7 @@ const express = require('express');
 const authController = require('../controllers/auth');
 const router = express.Router();
 const uniAddController = require('../controllers/uniAdmissionAdminAdd');
+const uniEditController = require('../controllers/uniAdmissionAdminEdit');
 
 router.get("/", (req, res) => {
 
@@ -12,8 +13,6 @@ router.get("/", (req, res) => {
 router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
 
     console.log("admin");
-
-
     if (req.results && req.areaResults) {
 
         // req.session.valid = null;
@@ -45,9 +44,19 @@ router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddControlle
 
 });
 
-router.get("/uniAdmissionAdminEdit", (req, res) => {
+router.get("/uniAdmissionAdminEdit", uniEditController.getEditData, (req, res) => {
 
-    res.render("uniAdmissionAdminEdit.hbs");
+    // console.log("edit at admin");
+    if (req.dataRecord) {
+        res.render("uniAdmissionAdminEdit.hbs",{
+            universityData :req.dataRecord
+        });
+
+    }
+    else {
+        res.redirect("/uniAdmissionAdminEdit");
+    }
+
 });
 router.get("/otherAddition", (req, res) => {
     res.render("otherAddition.hbs");

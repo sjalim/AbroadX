@@ -1,0 +1,25 @@
+.subject_id {
+    display: inline-block;
+}
+
+.save_button,.confirm_button {
+
+    padding: 5px 10px;
+    float: right;
+    margin: 10px;
+}
+
+a.save_button {
+    text-decoration: none;
+}
+
+
+#cancel_button {
+    padding: 5px 10px;
+    float: right;
+    margin: 10px;
+}
+
+a#cancel_button {
+    text-decoration: none;
+}

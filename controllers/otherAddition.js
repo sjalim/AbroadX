@@ -18,30 +18,32 @@ const db = mysql.createConnection({
 
 exports.uniListAppend = async (req, res) => {
     let uniPhoto;
+    let uploadPath;
     try {
         const {uni_name, uni_web} = req.body;
-
         uniPhoto = req.files.uni_photo_file;
+        // console.log(uni_name, +" " + uni_web);
+        uploadPath = '/uni_img_upload/' + uniPhoto.name;
+        // Use mv() to place file on the server
+        await uniPhoto.mv(uploadPath, function (err) {
+            if (err) return res.status(500).send(err);
 
-        console.log(uni_name, +" " + uni_web);
-
-
-        db.query('insert into university_list set ?', {
-            name: uni_name,
-            website: uni_web,
-            photo: uniPhoto
-        }, (error, results) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(results);
-                return res.render('otherAddition.hbs', {
-                    message: 'University Added to database'
-                });
-            }
-        });
-
-    } catch (e) {
+            db.query('insert into university_list set ?', {
+                name: uni_name,
+                website: uni_web,
+                photo: uploadPath
+            }, (error, results) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(results);
+                    return res.render('otherAddition.hbs', {
+                        message: 'University Added to database'
+                    });
+                }
+            });
+            });
+        } catch (e) {
         console.log(e);
     }
 

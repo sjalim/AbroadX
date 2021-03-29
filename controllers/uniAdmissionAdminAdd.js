@@ -47,7 +47,6 @@ exports.admissionRecordStore = async (req, res) => {
                     } else {
                         console.log(results);
                         // req.session.valid = 'Record Added to database';
-                        return res.redirect('/admin/uniAdmissionAdminAdd');
                     }
                 });
             }
@@ -78,7 +77,7 @@ exports.admissionRecordStore = async (req, res) => {
                     }
                 });
             }
-            else if(level===2){
+            else if(level==="2"){
                 db.query('insert into phd set ?',{
                     subject:subject,
                     area:area,
@@ -121,13 +120,11 @@ exports.admissionRecordStore = async (req, res) => {
     }
 
 };
-
 exports.getUniList = async (req, res, next) => {
-
 
     db.query('select id, name from university_list', async (error, results) => {
 
-        console.log(results);
+        // console.log(results);
         if (!results) {
             return next();
         }
@@ -143,7 +140,7 @@ exports.getAreaList = async (req,res,next) =>{
 
   db.query('select id, name from area_list',async (error,results)=>{
       console.log("areas");
-      console.log(results);
+      // console.log(results);
       if(!results)
       {
           return next();
