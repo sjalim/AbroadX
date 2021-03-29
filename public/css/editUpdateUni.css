@@ -2,7 +2,7 @@
     display: inline-block;
 }
 
-.save_button {
+.save_button,.confirm_button {
 
     padding: 5px 10px;
     float: right;

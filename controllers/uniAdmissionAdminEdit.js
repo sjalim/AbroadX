@@ -36,7 +36,7 @@ exports.getEditData = async (req, res, next) => {
     });
 };
 exports.retrieveRecordDataUpdateDelete = async (req, res, next) => {
-    console.log("at uni update record :" + req.params.uni_subject_id + " " + req.params.level);
+    // console.log("at uni update record :" + req.params.uni_subject_id + " " + req.params.level);
     let subject_id = req.params.uni_subject_id;
     let level = req.params.level;
     try {
@@ -175,6 +175,61 @@ exports.updateUniRecord = async (req, res, next) => {
     return next();
 };
 exports.deleteUniRecord = async (req, res, next) => {
-    console.log("at uni delete record :" + req.params.uni_subject_id + " " + req.params.level);
+    console.log("at uni delete record :" + req.params.subject_id + " " + req.params.level);
+
+    let level = req.params.level;
+    let subject_id = req.params.subject_id;
+
+
+    level = level.trim();
+
+
+
+
+
+    if(level=== "Bachelor")
+    {
+        console.log("check");
+
+        var sql = 'delete from bachelor where subject_id = '+subject_id.toString();
+
+        db.query(sql,function (error,results)
+        {
+            if (error) throw error;
+            console.log("deleted from bachelor!");
+            return  next();
+        });
+
+
+
+    }else if(level.normalize() === "Master")
+    {
+        var sql = 'delete from master where subject_id = '+subject_id.toString();
+
+        db.query(sql,function (error,results)
+        {
+            if (error) throw error;
+            console.log("deleted from master!");
+            return  next();
+        });
+
+
+    }else if(level.normalize() === "PhD")
+    {
+        var sql = 'delete from phd where subject_id = '+subject_id.toString();
+
+        db.query(sql,function (error,results)
+        {
+            if (error) throw error;
+            console.log("deleted from phd!");
+            return  next();
+        });
+
+
+    }else {
+
+    }
+
+
     return next();
 };
