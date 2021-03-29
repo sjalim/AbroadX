@@ -1,14 +1,3 @@
-/*html {*/
-/*  position: relative;*/
-/*  min-height: 100%;*/
-/*}*/
-
-
-/*.page-container {*/
-/*  position: relative;*/
-/*  min-height: 100vh;*/
-/*}*/
-
 .header-area .header-top {
     background: #0d2d3e;
     padding: 8px 0px;
@@ -37,9 +26,6 @@
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     color: #ff7d7a;
 }
-
-
-
 
 /* banner section */
   #banner {

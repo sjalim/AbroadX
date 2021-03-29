@@ -2,6 +2,7 @@ const express = require('express');
 const _ = require("lodash");
 const router = express.Router();
 
+const indexController = require('../controllers/index');
 const authController = require('../controllers/auth');
 const contactUsController = require('../controllers/contact_us');
 const blogController = require('../controllers/blog');
@@ -11,33 +12,45 @@ const uniAddController = require('../controllers/uniAdmissionAdminAdd');
 const uniAdmissionController = require('../controllers/uniAdmission');
 const faqController = require('../controllers/faq');
 const profileController = require('../controllers/profile');
+const aboutController = require('../controllers/about_us');
+const teamController = require('../controllers/team');
 
+
+
+router.get("/", authController.isLoggedIn, indexController.counter, (req, res) => {
+    res.render("index.ejs",{
+        user : req.user,
+        countUniversities: totalUniversities,
+        countScholarships: totalScholarships,
+        countTopics: totalTopics
+    });
+});
+
+router.get("/contact_us",authController.isLoggedIn, contactUsController.contactForm, (req, res) => {
+    res.render("contact_us.ejs",{
+        user : req.user,
+        message: message
+    });
+});
+
+router.get("/about_us", authController.isLoggedIn, aboutController.showAboutUs,(req, res) => {
+    res.render("about_us.ejs",{
+        aboutUs: rows[0],
+        user : req.user
+    });
+});
+
+router.get("/team", authController.isLoggedIn, teamController.showTeamMembers, (req, res) => {
+    res.render("team.ejs",{
+        listOfMembers: rows,
+        user : req.user
+    });
+});
 
 router.get("/", authController.isLoggedIn, (req, res) => {
 
-    res.render("index.ejs", {
-        user: req.user
-    });
-});
-
-router.get("/contact_us", authController.isLoggedIn, contactUsController.contactForm, (req, res) => {
-    res.render("contact_us.ejs", {
-        user: req.user,
-        message: req.message
-    });
-});
-
-router.get("/about_us", authController.isLoggedIn, (req, res) => {
-
-    res.render("about_us.ejs", {
-        user: req.user
-    });
-});
-
-router.get("/", authController.isLoggedIn, (req, res) => {
-
-    res.render("index.ejs", {
-        user: req.user
+    res.render("index.ejs",{
+        user : req.user
     });
 });
 
@@ -55,7 +68,8 @@ router.get("/uniAdmission", authController.isLoggedIn, uniEditController.getEdit
             selectedLevel: null
 
         });
-
+    } else {
+        res.redirect("/login");
     }
 });
 
@@ -68,7 +82,6 @@ router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLogge
             selectedData: req.dataRecord,
             selectedUni: req.selectedUni
         });
-
     }
 });
 
@@ -160,16 +173,10 @@ router.get("/uni_delete_details/:uni_subject_id/:level", uniEditController.retri
 router.get("/faq", authController.isLoggedIn,faqController.faq, (req, res) => {
 
 
-    if (req.user && req.faqs) {
         res.render("faq.ejs",{
             user: req.user,
             faqs: req.faqs
         });
-    }
-    else
-    {
-        res.redirect('/faq');
-    }
 
 });
 
@@ -177,17 +184,10 @@ router.post("/faq/search",authController.isLoggedIn,faqController.searchFaq,(req
 
 
     console.log('at page');
-    if (req.user && req.faqs) {
         res.render("faq.ejs",{
             user: req.user,
             faqs: req.faqs
         });
-
-    }
-    else
-    {
-        res.redirect('/faq');
-    }
 });
 
 router.post("/profile/change_pic/:id",authController.isLoggedIn,profileController.uploadProfilePic,(req,res)=>{
@@ -201,26 +201,25 @@ router.post("/profile/change_pic/:id",authController.isLoggedIn,profileControlle
     }
 });
 
-
-
-/*----------Blogs-----------*/
-router.get("/blog", authController.isLoggedIn, blogController.showBlogs,
+/**-----------------Blogs-----------------**/
+router.get("/blog", authController.isLoggedIn,blogController.showBlogs,
     (req, res) => {
-        res.render("blog.ejs", {
-            listOfBlogs: rows,
-            user: req.user,
-            notFound: message
-        });
+    res.render("blog.ejs",{
+        listOfBlogs: rows,
+        user : req.user,
+        notFound: message
     });
+});
 
 // Show blog by id
-router.get("/blog/blog_details/:id", authController.isLoggedIn, blogController.showBlogById,
+router.get("/blog/blog_details/:id", authController.isLoggedIn,blogController.showBlogById,
     (req, res) => {
-        res.render("blog_details.ejs", {
-            blog: rows[0],
-            user: req.user
-        });
+    res.render("blog_details.ejs",{
+        blog: rows[0],
+        user : req.user,
+        checkAdmin: false
     });
+});
 // Delete blog
 // router.get("/blog/:id", authController.isLoggedIn,blogController.deleteBlogById, (req, res) => {
 //
@@ -229,32 +228,35 @@ router.get("/blog/blog_details/:id", authController.isLoggedIn, blogController.s
 //     });
 // });
 
-/*--------Scholarship---------*/
+/**--------------Scholarship--------------**/
 router.get("/scholarship", scholarshipController.showScholarships,
     (req, res) => {
-        if (req.user) {
-            res.render("scholarship.ejs", {
-                listOfCountries: countries,
-                listOfScholarships: rows,
-                user: req.user
-            });
-        } else {
-            res.redirect("/login");
-        }
-    });
+    if (req.user) {
+        res.render("scholarship.ejs",{
+            listOfCountries: countries,
+            listOfScholarships: rows,
+            user : req.user
+        });
+    }
+    else {
+        res.redirect("/login");
+    }
+});
 
 // Show Scholarship by id
 router.get("/scholarship/scholarship_details/:id", scholarshipController.showScholarshipById,
     (req, res) => {
         if (req.user) {
-            res.render("scholarship_details.ejs", {
+            res.render("scholarship_details.ejs",{
                 scholarship_details: rows[0],
-                user: req.user
+                user : req.user,
+                checkAdmin: false
             });
-        } else {
+        }
+        else {
             res.redirect("/login");
         }
-    });
+});
 
 
 module.exports = router;

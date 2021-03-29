@@ -1,0 +1,25 @@
+#edit-scholarship{
+    padding: 5% 20%;
+}
+
+.card-6 {
+    border: 2px solid #e5e5e5;
+}
+
+.form-row {
+    align-items: flex-start;
+    padding: 30px 55px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+h3 {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+p{
+    margin-top: 10px;
+    font-style: italic;
+}

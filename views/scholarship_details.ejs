@@ -20,7 +20,14 @@
 <%- include("navbar") -%>
 
 <section id="scholarship-section">
-
+    <% if(checkAdmin) { %>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/scholarship_admin">Scholarship Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Scholarship Details</li>
+            </ol>
+        </nav>
+    <% } %>
     <div class="scholarship-title">
         <h1> <%= scholarship.scholarshipTitle %> </h1>
     </div>

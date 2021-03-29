@@ -1,0 +1,21 @@
+#team-admin {
+    padding: 5% 20%;
+}
+
+.row {
+    padding-bottom: 1%;
+}
+
+.add-button {
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.add-button:hover {
+    background-color: #888888
+}
+
+#team-admin .table .btn:hover {
+    background-color: #888888
+}
+
