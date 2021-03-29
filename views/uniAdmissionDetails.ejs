@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/uniAdmissionDetails.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Raleway:wght@800&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<%- include("navbar") -%>
+
+
+<section class="body_section">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6">
+                <div>
+                    <h2>
+                        <%= selectedData.subject%>
+                    </h2>
+                </div>
+
+                <div>
+                    <p>
+                        <%= selectedData.post%>
+
+                    </p>
+                </div>
+
+                <div>
+                    <table class="info_table">
+                        <thead>
+                        <th>
+                            Information Title
+                        </th>
+                        <th>
+                            Information
+                        </th>
+
+                        </thead>
+                        <tr>
+                            <th>
+                                Application deadline
+
+                            </th>
+                            <td>
+                                <%= selectedData.application_deadline%>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Formal prerequisites
+
+                            </th>
+                            <td>
+
+                                <%= selectedData.formal_prereq%>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Tuition
+
+                            </th>
+                            <td>
+
+                                <%= selectedData.tuition_fee%>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Degree level
+
+                            </th>
+                            <td>
+
+                                <%= selectedData.degree_level%>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                City
+
+                            </th>
+                            <td>
+                                <%= selectedData.city%>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+
+                                Credits
+                            </th>
+                            <td>
+                                <%= selectedData.credit %>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+
+                                Language of teaching
+                            </th>
+                            <td>
+                                <%= selectedData.language%>
+
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 img_block">
+                <div id="img_portion">
+
+                <a href="<%= selectedUni.website%>" >
+                    <div>
+                        <img src="<%= selectedUni.photo%>" width="190px" height="190px">
+
+                        <div class="degree_head">
+                            <img src="/img/cap.png" width="20px" height="20px">
+                            <label><%= selectedData.level%> Degree</label>
+                        </div>
+                        <h4><%= selectedUni.name%></h4>
+                        <a href="<%= selectedUni.website%>" target="_blank">Go to the school</a>
+                    </div>
+                </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+<%- include("footer") -%>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

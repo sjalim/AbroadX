@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/uniAdmission.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Raleway:wght@800&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Nav Bar -->
+<%- include("navbar") -%>
+
+
+<section class="body_section">
+
+<div class="container">
+    <div class="page-title">
+        <h1>
+            <span>FIND YOUR</span>
+            PROGRAMME<br>
+            OF STUDY.
+        </h1>
+    </div>
+
+    <form action="/search" method="post" class="search_content">
+        <div class="form-group filter" id="level_category">
+            <label for="program">Level</label><br>
+            <div class="select">
+                <select id="program" name="level">
+                    <option selected disabled value="0">Choose level...</option>
+                    <option value="Master" <% if(selectedLevel){  if(selectedLevel.trim()==="Master"){ %> selected <% } } %> >Master</option>
+                    <option value="Bachelor" <% if(selectedLevel){  if(selectedLevel.trim()==="Bachelor"){ %> selected <% } } %> >Bachelor</option>
+                    <option value="PhD" <% if(selectedLevel){  if(selectedLevel.trim()==="PhD"){ %> selected <% } } %> >PhD</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group filter" id="area_category">
+            <label for="area">Subject Area</label><br>
+            <div class="select">
+                <select id="area" name="area">
+                    <option selected disabled value="0">Choose subject area..</option>
+
+                    <% for(var i =0;i< areaList.length;i++) {%>
+                    <option value="<%= areaList[i].name %>" <% if(selectedArea){  if(selectedArea.trim()===areaList[i].name){ %> selected <% } } %> ><%= areaList[i].name %></option>
+                    <%}%>
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group filter">
+            <button type="submit" id="search_btn" name="submit">SEARCH</button>
+        </div>
+    </form>
+
+        <section class="info_row_section">
+            <div class="container">
+                <div class="row" id="all_rows">
+                   <%
+                   if(dataRecord.length>0)
+                   {
+                   for(var i =0; i<dataRecord.length;i++){ %>
+
+                        <div class="col-sm-12 info_row" id="column">
+
+                            <div id="subject_name">
+
+                            <label for="record"><%= dataRecord[i].subject %></label>
+                            </div>
+
+                            <div class="degree_type_img">
+                                <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
+
+                                <h6><%= dataRecord[i].level%></h6>
+                            </div>
+
+                            <div class="varsity_name">
+                                <h3>
+                                    <%= dataRecord[i].university%>
+                                </h3>
+                            </div>
+
+                            <div class="button-grp">
+
+                                <a href="/uniAdmission/uni_update_details/<%= dataRecord[i].level %>/ <%= dataRecord[i].subject_id%>" id="see_more_button">See More →</a>
+
+                            </div>
+                        </div>
+                    <%}}
+                    else{%>
+
+                        <h4>Nothing</h4>
+
+                 <%   }
+                    %>
+                </div>
+            </div>
+        </section>
+
+</div>
+</section>
+
+
+<!-- Footer section -->
+<%- include("footer") -%>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

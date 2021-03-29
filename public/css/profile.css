@@ -1,9 +1,11 @@
 .profile-pic{
+    margin-top: 20px;
     width: 30%;
 }
 
 .show{
     display: inline-block;
+    margin-left: 20px;
 }
 
 .edit{
@@ -15,17 +17,8 @@
 }
 
 .profile-body{
-    margin-top: 50px;
-    margin-bottom: 100px;
-}
-#update-btn {
-    background-color: #6e7582;
-    width: 150px;
-    border-radius: 50px;
-    margin-left: 87%;
-    margin-top: 50px;
-    border: transparent;
-    box-shadow: grey ;
+    padding-top: 50px;
+    padding-bottom: 100px;
 }
 
 #country-code{
@@ -33,3 +26,67 @@
     margin-top: 5px;
 
 }
+
+
+.body_section{
+    background: -webkit-linear-gradient(left, #E6D1A4, rgb(29, 110, 133));
+
+}
+
+.section_left{
+    width: 100%;
+    height: 100%;
+}
+
+.section_right{
+    width: 100%;
+    height: 100%;
+
+}
+.title_tag{
+    font-weight: bold;
+}
+
+.show h4{
+    font-weight: normal;
+}
+#update-btn{
+    text-decoration: none;
+    background: #0D243D;
+    color: whitesmoke;
+    margin-bottom: 5px;
+    float: right;
+    width: 150px;
+    border-radius: 50px;
+    margin-left: 87%;
+    margin-top: 50px;
+    border: transparent;
+    box-shadow: grey
+
+}
+
+#update-btn:hover{
+    background: #2870BD;
+}
+
+.edit_button{
+    margin-top: 10px;
+}
+
+
+.edit_button:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+.change_pro_pic_button{
+    margin-top: 20px;
+}
+
+.change_pic_btn_grp{
+    float: right;
+    margin: 5px;
+}
+#input_pic{
+    margin-top: 5px;
+}
+

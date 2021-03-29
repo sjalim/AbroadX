@@ -1,13 +1,14 @@
 const express = require('express');
 const flash = require('connect-flash');
 
-const router = express.Router();
 const authController = require('../controllers/auth');
+const router = express.Router();
 const uniAddController = require('../controllers/uniAdmissionAdminAdd');
 const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
 const teamController = require('../controllers/team');
 const aboutController = require('../controllers/about_us');
+const uniEditController = require('../controllers/uniAdmissionAdminEdit');
 
 router.get("/", (req, res) => {
 
@@ -50,9 +51,19 @@ router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddControlle
 
 });
 
-router.get("/uniAdmissionAdminEdit", (req, res) => {
+router.get("/uniAdmissionAdminEdit", uniEditController.getEditData, (req, res) => {
 
-    res.render("uniAdmissionAdminEdit.hbs");
+    // console.log("edit at admin");
+    if (req.dataRecord) {
+        res.render("uniAdmissionAdminEdit.hbs",{
+            universityData :req.dataRecord
+        });
+
+    }
+    else {
+        res.redirect("/uniAdmissionAdminEdit");
+    }
+
 });
 router.get("/otherAddition", (req, res) => {
     res.render("otherAddition.hbs");

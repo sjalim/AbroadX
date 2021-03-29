@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const _ = require("lodash");
 const session = require("express-session");
 const flash = require("connect-flash");
+const Handlebars = require('hbs');
+
 
 const fileUploader = require('express-fileupload');
 dotenv.config({
@@ -81,3 +83,36 @@ app.use(function(req, res, next){
 app.listen(5000 ,() =>{
         console.log("server started at 5000...");
 });
+
+
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
+
+
+

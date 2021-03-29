@@ -7,8 +7,11 @@ const authController = require('../controllers/auth');
 const contactUsController = require('../controllers/contact_us');
 const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
-const teamController = require('../controllers/team');
-const aboutController = require('../controllers/about_us');
+const uniEditController = require('../controllers/uniAdmissionAdminEdit');
+const uniAddController = require('../controllers/uniAdmissionAdminAdd');
+const uniAdmissionController = require('../controllers/uniAdmission');
+const faqController = require('../controllers/faq');
+const profileController = require('../controllers/profile');
 
 
 router.get("/", authController.isLoggedIn, indexController.counter, (req, res) => {
@@ -49,11 +52,34 @@ router.get("/", authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get("/uniAdmission", authController.isLoggedIn,(req, res) => {
+router.get("/uniAdmission", authController.isLoggedIn, uniEditController.getEditData, uniAddController.getAreaList, (req, res) => {
 
-    res.render("uniAdmission.hbs",{
-        user : req.user
-    });
+    // console.log(req.dataRecord);
+
+    if (req.user && req.dataRecord) {
+        res.render("uniAdmission.ejs", {
+            user: req.user,
+            dataRecord: req.dataRecord,
+            areaList: req.areaResults,
+            selectedArea: null,
+            selectedLevel: null
+
+        });
+
+    }
+});
+
+router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLoggedIn, uniAdmissionController.selectedContent, (req, res) => {
+
+    if (req.user && req.dataRecord && req.selectedUni) {
+        res.render("uniAdmissionDetails.ejs", {
+
+            user: req.user,
+            selectedData: req.dataRecord,
+            selectedUni: req.selectedUni
+        });
+
+    }
 });
 
 
@@ -69,14 +95,118 @@ router.get("/login", (req, res) => {
 router.get("/profile", authController.isLoggedIn, (req, res) => {
 
     if (req.user) {
-        res.render("profile.hbs",{
+        res.render("profile.hbs", {
 
-            user : req.user
+            user: req.user
 
         });
 
+    } else {
+        res.redirect("/login");
     }
-    else {
+});
+
+//update confirm
+router.post("/update_subject/:subject_id/:level", uniEditController.updateUniRecord, (req, res) => {
+
+    res.redirect('/admin/uniAdmissionAdminEdit');
+
+});
+
+//delete confirm
+router.get("/delete_subject/:subject_id/:level", uniEditController.deleteUniRecord, (req, res) => {
+    res.redirect('/admin/uniAdmissionAdminEdit');
+});
+
+
+router.post("/search", uniAdmissionController.searchContent, authController.isLoggedIn, uniAddController.getAreaList, (req, res) => {
+
+    res.render("uniAdmission.ejs", {
+        user: req.user,
+        dataRecord: req.dataRecord,
+        areaList: req.areaResults,
+        selectedLevel: req.level,
+        selectedArea: req.area
+
+    });
+
+
+});
+
+
+//go to update university details
+router.get("/uni_update_details/:uni_subject_id/:level", uniEditController.retrieveRecordDataUpdateDelete, uniAddController.getAreaList, uniAddController.getUniList, (req, res) => {
+
+    console.log("at page");
+    // console.log(req.results.level);
+    // console.log(req.results);
+
+    if (req.uniRecord && req.results && req.areaResults) {
+        res.render("editUpdateUni.ejs", {
+
+            result: req.uniRecord,
+            uniList: req.results,
+            areaList: req.areaResults
+        });
+
+    } else {
+        res.redirect("/admin/uniAdmissionAdminEdit");
+    }
+
+
+});
+
+//go to delete university details
+router.get("/uni_delete_details/:uni_subject_id/:level", uniEditController.retrieveRecordDataUpdateDelete, (req, res) => {
+
+    if (req.uniRecord) {
+        res.render("editDeleteUni.ejs", {
+            uniRecord: req.uniRecord
+        });
+    }
+});
+
+
+router.get("/faq", authController.isLoggedIn,faqController.faq, (req, res) => {
+
+
+    if (req.user && req.faqs) {
+        res.render("faq.ejs",{
+            user: req.user,
+            faqs: req.faqs
+        });
+    }
+    else
+    {
+        res.redirect('/faq');
+    }
+
+});
+
+router.post("/faq/search",authController.isLoggedIn,faqController.searchFaq,(req,res)=>{
+
+
+    console.log('at page');
+    if (req.user && req.faqs) {
+        res.render("faq.ejs",{
+            user: req.user,
+            faqs: req.faqs
+        });
+
+    }
+    else
+    {
+        res.redirect('/faq');
+    }
+});
+
+router.post("/profile/change_pic/:id",authController.isLoggedIn,profileController.uploadProfilePic,(req,res)=>{
+
+    if (req.user) {
+        res.render("profile.hbs", {
+            user: req.user
+        });
+    } else {
         res.redirect("/login");
     }
 });

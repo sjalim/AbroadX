@@ -1,14 +1,3 @@
-// const mysql = require("/mysql");
-// const jwt = require('jsonwebtoken');
-// let email;
-//
-// const db = mysql.createConnection({
-//     host: process.env.DATABASE_HOST,
-//     user: process.env.DATABASE_USER,
-//     password: process.env.DATABASE_PASSWORD,
-//     database: process.env.DATABASE
-//
-// });
 
 function edit() {
     var edit = document.getElementsByClassName('edit');
@@ -42,6 +31,8 @@ function edit() {
     }
 
 
+
+
     document.getElementById('update-btn').addEventListener("click", function () {
 
         var nameInput = document.getElementById('edit-name').value;
@@ -52,17 +43,19 @@ function edit() {
         console.log(selectedText);
     });
 
-    // var emailInput = document.getElementById('').value;
-    // var phoneInput = document.getElementById('').value;
-
-
-
-
-// db.query('select * from users email = ?' ,[email],async (error,results) =>{
-//
-//     console.log(results);
-//
-//
-// });
-
 }
+
+let changeProPicButton = document.getElementById('change-pro-pic');
+let cancelChangePic = document.getElementById('change_pic_cancel');
+let picInputForm = document.getElementById('change_pro_pic_form');
+picInputForm.style.display = 'none';
+changeProPicButton.addEventListener("click",function (){
+
+    picInputForm.style.display = 'block';
+});
+
+cancelChangePic.addEventListener("click",function (){
+
+    picInputForm.style.display = 'none';
+
+});

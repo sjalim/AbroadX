@@ -1,0 +1,14 @@
+.search_box{
+
+    text-align: center;
+
+}
+
+#search{
+    width: 400px;
+    border-radius: 6px;
+}
+
+.body_part{
+    background: whitesmoke;
+}
