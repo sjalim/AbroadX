@@ -12,6 +12,9 @@ const uniAddController = require('../controllers/uniAdmissionAdminAdd');
 const uniAdmissionController = require('../controllers/uniAdmission');
 const faqController = require('../controllers/faq');
 const profileController = require('../controllers/profile');
+const aboutController = require('../controllers/about_us');
+const teamController = require('../controllers/team');
+
 
 
 router.get("/", authController.isLoggedIn, indexController.counter, (req, res) => {
@@ -65,7 +68,8 @@ router.get("/uniAdmission", authController.isLoggedIn, uniEditController.getEdit
             selectedLevel: null
 
         });
-
+    } else {
+        res.redirect("/login");
     }
 });
 
@@ -78,7 +82,6 @@ router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLogge
             selectedData: req.dataRecord,
             selectedUni: req.selectedUni
         });
-
     }
 });
 
@@ -170,16 +173,10 @@ router.get("/uni_delete_details/:uni_subject_id/:level", uniEditController.retri
 router.get("/faq", authController.isLoggedIn,faqController.faq, (req, res) => {
 
 
-    if (req.user && req.faqs) {
         res.render("faq.ejs",{
             user: req.user,
             faqs: req.faqs
         });
-    }
-    else
-    {
-        res.redirect('/faq');
-    }
 
 });
 
@@ -187,17 +184,10 @@ router.post("/faq/search",authController.isLoggedIn,faqController.searchFaq,(req
 
 
     console.log('at page');
-    if (req.user && req.faqs) {
         res.render("faq.ejs",{
             user: req.user,
             faqs: req.faqs
         });
-
-    }
-    else
-    {
-        res.redirect('/faq');
-    }
 });
 
 router.post("/profile/change_pic/:id",authController.isLoggedIn,profileController.uploadProfilePic,(req,res)=>{

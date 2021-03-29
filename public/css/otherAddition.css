@@ -1,8 +1,14 @@
-
 .image_preview{
-    width: 200px;
-    height: 100px;
+    /*width: 200px;*/
+    /*height: 100px;*/
     text-align: center;
     border: 2px solid  grey;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
+}
+#img_preview_image {
+    width: 250px;
+    height: 250px;
+}
+.sidebar {
+    margin-top: -25px;
 }
