@@ -42,113 +42,108 @@
                 <a class="nav-link nav_bar_features" href="#">Blog</a>
                 <a class="nav-link nav_bar_features" href="#">Community</a>
 
-                {{#if user}}
+                <% if(user) { %>
 
                     <a class="nav-link nav_bar_features" href="/profile">Your Profile</a>
                     <a class="nav-link nav_bar_features btn btn-sm" href="/auth/logout">Logout</a>
-
-                {{else}}
+                <% } else{ %>
 
                     <a class="nav-link nav_bar_features btn btn-sm" href="/login">Sign In</a>
                     <a class="nav-link nav_bar_features btn btn-sm" href="/register">Sign Up</a>
 
-                {{/if}}
-
+                <% } %>
 
             </div>
         </div>
     </div>
 </nav>
 
+<section class="body_section">
 
 <div class="container">
-
-
     <div class="page-title">
-
         <h1>
             <span>FIND YOUR</span>
             PROGRAMME<br>
             OF STUDY.
         </h1>
-
     </div>
 
-
-    <form class="search_content">
+    <form action="/search" method="post" class="search_content">
         <div class="form-group filter" id="level_category">
             <label for="program">Level</label><br>
             <div class="select">
-
-                <select id="program" name="program">
-                    <option selected disabled>Choose level...</option>
-                    <option value="15">Master</option>
-                    <option value="16">Bachelor</option>
-                    <option value="17">PhD</option>
+                <select id="program" name="level">
+                    <option selected disabled value="0">Choose level...</option>
+                    <option value="Master" <% if(selectedLevel){  if(selectedLevel.trim()==="Master"){ %> selected <% } } %> >Master</option>
+                    <option value="Bachelor" <% if(selectedLevel){  if(selectedLevel.trim()==="Bachelor"){ %> selected <% } } %> >Bachelor</option>
+                    <option value="PhD" <% if(selectedLevel){  if(selectedLevel.trim()==="PhD"){ %> selected <% } } %> >PhD</option>
                 </select>
             </div>
         </div>
-
         <div class="form-group filter" id="area_category">
             <label for="area">Subject Area</label><br>
-
             <div class="select">
-
-
                 <select id="area" name="area">
-                    <option selected disabled>Choose subject area..</option>
-                    <option value="18">General Programmes</option>
-                    <option value="19">Education</option>
-                    <option value="20">Humanities and Arts</option>
-                    <option value="21">Social sciences, Business and Law</option>
-                    <option value="22">Science, Mathematics and Computing</option>
-                    <option value="23">Engineering, Manufacturing and Construction</option>
-                    <option value="24">Agriculture and Veterinary</option>
-                    <option value="25">Health and Welfare</option>
-                    <option value="26">Services</option>
+                    <option selected disabled value="0">Choose subject area..</option>
 
+                    <% for(var i =0;i< areaList.length;i++) {%>
+                    <option value="<%= areaList[i].name %>" <% if(selectedArea){  if(selectedArea.trim()===areaList[i].name){ %> selected <% } } %> ><%= areaList[i].name %></option>
+                    <%}%>
                 </select>
             </div>
 
         </div>
         <div class="form-group filter">
-
-            <button type="submit" id="search_btn">SEARCH</button>
+            <button type="submit" id="search_btn" name="submit">SEARCH</button>
         </div>
-
-
-
     </form>
-</div>
-<section class="info_row_section">
 
+        <section class="info_row_section">
+            <div class="container">
+                <div class="row" id="all_rows">
+                   <%
+                   if(dataRecord.length>0)
+                   {
+                   for(var i =0; i<dataRecord.length;i++){ %>
 
-    <div class="container">
-        <div class="row" id="all_rows">
-            <!--            {{!#each universityData}}-->
-            <!--                    {{!#ifCond currentType '==' "Total"}}-->
-            <div class="col-sm-12 info_row " id="column">
+                        <div class="col-sm-12 info_row" id="column">
 
-                <label for="record">{{!this.subject}}</label>
-                <div class="degree_type_img">
-                    <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
+                            <div id="subject_name">
 
-                    <h6>{{!this.level}}</h6>
+                            <label for="record"><%= dataRecord[i].subject %></label>
+                            </div>
+
+                            <div class="degree_type_img">
+                                <img src="/img/cap.png" alt="cap-img" width="100px" height="100px">
+
+                                <h6><%= dataRecord[i].level%></h6>
+                            </div>
+
+                            <div class="varsity_name">
+                                <h3>
+                                    <%= dataRecord[i].university%>
+                                </h3>
+                            </div>
+
+                            <div class="button-grp">
+
+                                <a href="/uniAdmission/uni_update_details/<%= dataRecord[i].level %>/ <%= dataRecord[i].subject_id%>" id="see_more_button">See More →</a>
+
+                            </div>
+                        </div>
+                    <%}}
+                    else{%>
+
+                        <h4>Nothing</h4>
+
+                 <%   }
+                    %>
                 </div>
-                <div class="varsity_name">
-                    <h3>
-                        {{!this.university}}
-                    </h3>
-                </div>
-
-
-
             </div>
-            <!--                    {{!/ifCond}}-->
-            {{!/each}}
-        </div>
-    </div>
+        </section>
 
+</div>
 </section>
 
 

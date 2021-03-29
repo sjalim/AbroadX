@@ -8,6 +8,7 @@ const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
 const uniEditController = require('../controllers/uniAdmissionAdminEdit');
 const uniAddController = require('../controllers/uniAdmissionAdminAdd');
+const uniAdmissionController = require('../controllers/uniAdmission');
 
 
 router.get("/", authController.isLoggedIn, (req, res) => {
@@ -39,11 +40,36 @@ router.get("/", authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get("/uniAdmission", authController.isLoggedIn, (req, res) => {
+router.get("/uniAdmission", authController.isLoggedIn,uniEditController.getEditData,uniAddController.getAreaList, (req, res) => {
 
-    res.render("uniAdmission.hbs", {
-        user: req.user
+    // console.log(req.dataRecord);
+
+    if(req.user && req.dataRecord)
+    {
+    res.render("uniAdmission.ejs", {
+        user: req.user,
+        dataRecord: req.dataRecord,
+        areaList: req.areaResults,
+        selectedArea:null,
+        selectedLevel: null
+
     });
+
+    }
+});
+
+router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLoggedIn,uniAdmissionController.selectedContent,(req,res)=>{
+
+    if(req.user && req.dataRecord && req.selectedUni)
+    {
+    res.render("uniAdmissionDetails.ejs", {
+
+        user: req.user,
+        selectedData : req.dataRecord,
+        selectedUni : req.selectedUni
+    });
+
+    }
 });
 
 
@@ -70,14 +96,31 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
     }
 });
 
+//update confirm
 router.post("/update_subject/:subject_id/:level", uniEditController.updateUniRecord, (req, res) => {
 
     res.redirect('/admin/uniAdmissionAdminEdit');
 
 });
 
+//delete confirm
 router.get("/delete_subject/:subject_id/:level", uniEditController.deleteUniRecord, (req, res) => {
     res.redirect('/admin/uniAdmissionAdminEdit');
+});
+
+
+router.post("/search",uniAdmissionController.searchContent, authController.isLoggedIn,uniAddController.getAreaList,(req,res)=>{
+
+    res.render("uniAdmission.ejs", {
+        user: req.user,
+        dataRecord: req.dataRecord,
+        areaList: req.areaResults,
+        selectedLevel: req.level,
+        selectedArea : req.area
+
+    });
+
+
 });
 
 

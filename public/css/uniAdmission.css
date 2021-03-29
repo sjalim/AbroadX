@@ -35,8 +35,6 @@
     border: none;
     cursor: pointer;
     text-align: center;
-    -webkit-transition: background-color 0.3s ease;
-    -moz-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
 }
 
@@ -104,4 +102,57 @@ select {
 /* Transition */
 .select:hover::after {
     color: #FFFFFF;
+}
+
+#column{
+    margin-top: 20px;
+    box-shadow: 5px 5px grey;
+    border-radius: 5px;
+    background: #D0E2F4;
+    transition: 0.5s ease;
+
+
+}
+
+#column:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.degree_type_img,.varsity_name{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.button-grp{
+    text-align: right;
+
+
+}
+
+
+.body_section{
+    padding-bottom: 100px;
+    padding-top: 100px;
+    background: -webkit-linear-gradient(left, #E6D1A4, rgb(29, 110, 133));
+}
+
+#see_more_button{
+    text-decoration: none;
+    background: #0D243D;
+    color: whitesmoke;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#see_more_button:hover{
+    background: #2870BD;
+}
+
+#subject_name{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
 }
