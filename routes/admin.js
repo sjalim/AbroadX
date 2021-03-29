@@ -10,11 +10,9 @@ router.get("/", (req, res) => {
     res.render("admin.hbs");
 });
 
-router.get("/admin/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
+router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
 
     console.log("admin");
-
-
     if (req.results && req.areaResults) {
 
         // req.session.valid = null;
@@ -51,7 +49,6 @@ router.get("/uniAdmissionAdminEdit", uniEditController.getEditData, (req, res) =
     // console.log("edit at admin");
     if (req.dataRecord) {
         res.render("uniAdmissionAdminEdit.hbs",{
-
             universityData :req.dataRecord
         });
 

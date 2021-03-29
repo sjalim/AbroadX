@@ -21,13 +21,9 @@ exports.uniListAppend = async (req, res) => {
     let uploadPath;
     try {
         const {uni_name, uni_web} = req.body;
-
         uniPhoto = req.files.uni_photo_file;
-
-        console.log(uni_name, +" " + uni_web);
-
+        // console.log(uni_name, +" " + uni_web);
         uploadPath = '/uni_img_upload/' + uniPhoto.name;
-
         // Use mv() to place file on the server
         await uniPhoto.mv(uploadPath, function (err) {
             if (err) return res.status(500).send(err);

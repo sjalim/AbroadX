@@ -9,6 +9,8 @@ const scholarshipController = require('../controllers/scholarship');
 const uniEditController = require('../controllers/uniAdmissionAdminEdit');
 const uniAddController = require('../controllers/uniAdmissionAdminAdd');
 const uniAdmissionController = require('../controllers/uniAdmission');
+const faqController = require('../controllers/faq');
+const profileController = require('../controllers/profile');
 
 
 router.get("/", authController.isLoggedIn, (req, res) => {
@@ -40,34 +42,32 @@ router.get("/", authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get("/uniAdmission", authController.isLoggedIn,uniEditController.getEditData,uniAddController.getAreaList, (req, res) => {
+router.get("/uniAdmission", authController.isLoggedIn, uniEditController.getEditData, uniAddController.getAreaList, (req, res) => {
 
     // console.log(req.dataRecord);
 
-    if(req.user && req.dataRecord)
-    {
-    res.render("uniAdmission.ejs", {
-        user: req.user,
-        dataRecord: req.dataRecord,
-        areaList: req.areaResults,
-        selectedArea:null,
-        selectedLevel: null
+    if (req.user && req.dataRecord) {
+        res.render("uniAdmission.ejs", {
+            user: req.user,
+            dataRecord: req.dataRecord,
+            areaList: req.areaResults,
+            selectedArea: null,
+            selectedLevel: null
 
-    });
+        });
 
     }
 });
 
-router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLoggedIn,uniAdmissionController.selectedContent,(req,res)=>{
+router.get("/uniAdmission/uni_update_details/:level/:id", authController.isLoggedIn, uniAdmissionController.selectedContent, (req, res) => {
 
-    if(req.user && req.dataRecord && req.selectedUni)
-    {
-    res.render("uniAdmissionDetails.ejs", {
+    if (req.user && req.dataRecord && req.selectedUni) {
+        res.render("uniAdmissionDetails.ejs", {
 
-        user: req.user,
-        selectedData : req.dataRecord,
-        selectedUni : req.selectedUni
-    });
+            user: req.user,
+            selectedData: req.dataRecord,
+            selectedUni: req.selectedUni
+        });
 
     }
 });
@@ -109,14 +109,14 @@ router.get("/delete_subject/:subject_id/:level", uniEditController.deleteUniReco
 });
 
 
-router.post("/search",uniAdmissionController.searchContent, authController.isLoggedIn,uniAddController.getAreaList,(req,res)=>{
+router.post("/search", uniAdmissionController.searchContent, authController.isLoggedIn, uniAddController.getAreaList, (req, res) => {
 
     res.render("uniAdmission.ejs", {
         user: req.user,
         dataRecord: req.dataRecord,
         areaList: req.areaResults,
         selectedLevel: req.level,
-        selectedArea : req.area
+        selectedArea: req.area
 
     });
 
@@ -150,13 +150,57 @@ router.get("/uni_update_details/:uni_subject_id/:level", uniEditController.retri
 router.get("/uni_delete_details/:uni_subject_id/:level", uniEditController.retrieveRecordDataUpdateDelete, (req, res) => {
 
     if (req.uniRecord) {
-        res.render("editDeleteUni.ejs",{
-        uniRecord: req.uniRecord
+        res.render("editDeleteUni.ejs", {
+            uniRecord: req.uniRecord
         });
     }
+});
 
+
+router.get("/faq", authController.isLoggedIn,faqController.faq, (req, res) => {
+
+
+    if (req.user && req.faqs) {
+        res.render("faq.ejs",{
+            user: req.user,
+            faqs: req.faqs
+        });
+    }
+    else
+    {
+        res.redirect('/faq');
+    }
 
 });
+
+router.post("/faq/search",authController.isLoggedIn,faqController.searchFaq,(req,res)=>{
+
+
+    console.log('at page');
+    if (req.user && req.faqs) {
+        res.render("faq.ejs",{
+            user: req.user,
+            faqs: req.faqs
+        });
+
+    }
+    else
+    {
+        res.redirect('/faq');
+    }
+});
+
+router.post("/profile/change_pic/:id",authController.isLoggedIn,profileController.uploadProfilePic,(req,res)=>{
+
+    if (req.user) {
+        res.render("profile.hbs", {
+            user: req.user
+        });
+    } else {
+        res.redirect("/login");
+    }
+});
+
 
 
 /*----------Blogs-----------*/

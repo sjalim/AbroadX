@@ -12,8 +12,6 @@ const db = mysql.createConnection({
 
 });
 
-
-
 exports.searchContent = async (req, res, next) => {
 
   let level = req.body.level;

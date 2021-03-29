@@ -3,6 +3,7 @@
 const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const {promisify} = require('util');
+const path = require('path');
 
 
 const db = mysql.createConnection({
@@ -15,10 +16,8 @@ const db = mysql.createConnection({
 
 
 exports.profileUpdate = async (req,res,next) => {
-
-    console.log("chek");
+    // console.log("chek");
     try{
-
        const {name, email, countryCode, phone} = req.body;
 
         if (req.cookies.jwt) {
@@ -51,22 +50,45 @@ exports.profileUpdate = async (req,res,next) => {
 
             next();
         }
-
-
-
-
-
-
-
     }catch (e)
     {
         console.log(e);
     }
-
-
     // req.end();
 
+};
 
+exports.uploadProfilePic = async (req,res,next)=>{
 
+    let proPic;
+    let proPicPath;
+
+    let  id = req.params.id;
+    proPic = req.files.profile_pic;
+
+    var ext = path.extname(proPic.name);
+    console.log("user id:"+id);
+    try{
+
+        proPicPath = 'public/user_profile_pic/' + id+ext;
+        let  pic = id+ext;
+
+        await proPic.mv(proPicPath, function (err) {
+            if (err) return res.status(500).send(err);
+            db.query('update users set ?', {
+                photo: pic
+            }, (error, results) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(results);
+                    return next();
+                }
+            });
+        });
+    }catch (e)
+    {
+        console.log(e);
+    }
 };
 
