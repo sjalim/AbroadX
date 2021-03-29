@@ -7,6 +7,7 @@ const contactUsController = require('../controllers/contact_us');
 const blogController = require('../controllers/blog');
 const scholarshipController = require('../controllers/scholarship');
 const uniEditController = require('../controllers/uniAdmissionAdminEdit');
+const uniAddController = require('../controllers/uniAdmissionAdminAdd');
 
 
 router.get("/", authController.isLoggedIn, (req, res) => {
@@ -70,16 +71,48 @@ router.get("/profile", authController.isLoggedIn, (req, res) => {
     }
 });
 
+router.post("/update_subject/:subject_id/:level",uniEditController.updateUniRecord,(req,res)=>{
+
+    res.redirect('/admin/uniAdmissionAdminEdit');
+
+});
+
+router.get("/delete_subject/:subject_id/:level",uniEditController.deleteUniRecord,(req,res)=>{
+    res.redirect('/admin/uniAdmissionAdminEdit');
+});
+
+
 
 //go to update university details
-router.get("/uni_update_details/:uni_subject_id/:level",uniEditController.retrieveRecordDataUpdateDelete,(req,res)=>{
+router.get("/uni_update_details/:uni_subject_id/:level",uniEditController.retrieveRecordDataUpdateDelete,uniAddController.getAreaList,uniAddController.getUniList,(req,res)=>{
 
-    res.render("editUpdateUni.hbs");
+    console.log("at page");
+    // console.log(req.results.level);
+    // console.log(req.results);
+
+    if(req.uniRecord && req.results && req.areaResults)
+    {
+    res.render("editUpdateUni.ejs",{
+
+        result: req.uniRecord,
+        uniList: req.results,
+        areaList: req.areaResults
+    });
+
+    }
+    else
+    {
+        res.redirect("/admin/uniAdmissionAdminEdit");
+    }
+
+
 
 });
 
 //go to delete university details
 router.get("/uni_delete_details/:uni_subject_id/:level",uniEditController.retrieveRecordDataUpdateDelete,(req,res)=>{
+
+
 
     res.render("editDeleteUni.hbs");
 });

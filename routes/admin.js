@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     res.render("admin.hbs");
 });
 
-router.get("/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
+router.get("/admin/uniAdmissionAdminAdd", uniAddController.getUniList, uniAddController.getAreaList, (req, res) => {
 
     console.log("admin");
 
