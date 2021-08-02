@@ -3,7 +3,7 @@
 ## Brief 
 A web application with __Express.js__ and __Node.js__.
 As well as this is our 3rd year university team project.
-The website in intend to offer __Unversity Admission & Scholarship Information__ 
+The website is intend to offer __Unversity Admission & Scholarship Information__ 
 to international students. 
 
 
